@@ -20,14 +20,30 @@ defaults:
       suppress_menu: false
       menu:
         -
-          link: https://1/
-          text: Button 1
+          link: /
+          text: About
         -
-          link: https://2/
-          text: Button 2
+          link: /features/
+          text: Features
         -
-          link: https://3/
-          text: Button 3
+          link: /gui/
+          text: Graphical Interface
+        -
+          link: /cli/
+          text: Command Line
+        -
+          link: /config/
+          text: Configuration
+        -
+          link: /build/
+          text: Building
+        -
+          link: /more/
+          text: Other Info
+        -
+          id: dl
+          link: https://github.com/OmenMon/OmenMon/releases/latest
+          text: Download
       footer-link:
         -
           link: https://github.com/OmenMon/
