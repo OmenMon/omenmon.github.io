@@ -1,7 +1,3 @@
----
-disclaimer: Disclaimer Override Test
----
-
 # OmenMon
 
 ## Coming Soon
