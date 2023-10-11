@@ -1,1 +1,35 @@
+# OmenMon Web Page
+# Configuration
+
 remote_theme: OmenMon/Theme
+
+title: OmenMon
+description: Omen Hardware Monitoring & Control
+
+defaults:
+  -
+    scope:
+      path: "" # Any File
+      type: "pages"
+    values:
+      layout: "default"
+      suppress_header: false
+      suppress_logo: false
+      suppress_title: false
+      suppress_description: false
+      suppress_menu: false
+      menu:
+        -
+          link: https://1/
+          text: Button 1
+        -
+          link: https://2/
+          text: Button 2
+        -
+          link: https://3/
+          text: Button 3
+      footer-link:
+        -
+          link: https://github.com/OmenMon/
+          text: OmenMon
+      footer-disclaimer: © 2023
