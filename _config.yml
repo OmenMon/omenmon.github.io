@@ -23,22 +23,22 @@ defaults:
           link: /
           text: Intro
         -
-          link: /features/
+          link: /features
           text: Features
         -
-          link: /gui/
+          link: /gui
           text: Graphical Interface
         -
-          link: /cli/
+          link: /cli
           text: Command Line
         -
-          link: /config/
+          link: /config
           text: Configuration
         -
-          link: /build/
+          link: /build
           text: Building
         -
-          link: /more/
+          link: /more
           text: Other Info
         -
           id: dl

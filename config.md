@@ -102,10 +102,10 @@ A [Boolean value](#boolean) that defaults to **false**.
 If set to **true**, when the application is started in GUI mode, automatically:
 
 * Enable or disable automatic start-up when a user logs on, depending on the value of the [AutoStartup](#autostartup) setting
-* Set the [GPU power level](/cli/#gpu) to the value of [GpuPowerDefault](#gpupowerdefault)
+* Set the [GPU power level](/cli#gpu) to the value of [GpuPowerDefault](#gpupowerdefault)
 * Start the [fan program](#fan-programs) named in [FanProgramDefault](#fanprogramdefault)
 
-This setting can be changed from the GUI context menu: [Settings](/gui/#menu-settings) → [Apply Settings on Startup](/gui/#apply-settings-on-startup)
+This setting can be changed from the GUI context menu: [Settings](/gui#menu-settings) → [Apply Settings on Startup](/gui#apply-settings-on-startup)
 
 #### AutoStartup
 
@@ -115,7 +115,7 @@ When [AutoConfig](#autoconfig) is enabled, whether to automatically apply the se
 
 Note: it might be a bit counter-intuitive how this works but if you are <u>not</u> using [AutoConfig](#autoconfig), this setting is irrelevant, as whether the application starts automatically or not is determined by the `Gui` task being either enabled or disabled, which can be changed with:
 * `OmenMon -Task Gui=On` in CLI mode
-* [Settings](/gui/#menu-settings) → [Start with Windows](/gui/#start-with-windows) in GUI mode
+* [Settings](/gui#menu-settings) → [Start with Windows](/gui#start-with-windows) in GUI mode
 
 The latter also changes the value for this setting.
 
@@ -139,9 +139,9 @@ Where:
 * `<ColorPresets>` is the root element all presets are contained within
 * `<Preset Name="value">` is a container for each color preset entry
 * The `value` of the `Name=` attribute is a [string](#string) used as the name of the preset
-* The parameter value such as `0080FF:00FF00:00FF00:FFFFFF` is a specially-formatted [string](#string) that follows the same syntax as when [changing colors from the command line](/cli/#color)
+* The parameter value such as `0080FF:00FF00:00FF00:FFFFFF` is a specially-formatted [string](#string) that follows the same syntax as when [changing colors from the command line](/cli#color)
 
-If you are using the GUI mode, the parameter values will be [automatically shown](/gui/#color-param) and retained when you [save your preset](/gui/#color-save). While there is no equivalent functionality to delete or save presets from the CLI mode, if the backlight is already set to the colors you like, you can manually add the value shown by `OmenMon -Bios Color` to the configuration file. You can also reference these presets from the command line, for example with `OmenMon -Bios Color=DefaultApp`
+If you are using the GUI mode, the parameter values will be [automatically shown](/gui#color-param) and retained when you [save your preset](/gui#color-save). While there is no equivalent functionality to delete or save presets from the CLI mode, if the backlight is already set to the colors you like, you can manually add the value shown by `OmenMon -Bios Color` to the configuration file. You can also reference these presets from the command line, for example with `OmenMon -Bios Color=DefaultApp`
 
 ![Setting the colors from preset name](/pic/cli-bios-set.png)
 
@@ -217,7 +217,7 @@ Maximum fan level threshold. This setting is used in constant-speed mode for fan
 
 <img alt="Fan Controls" src="/pic/gui-main-fan.png" width="50%" />
 
-When setting constant fan speed, if both values are set to the maximum, it will be considered equivalent to enabling the [maximum fan speed mode](/cli/#fanmax).
+When setting constant fan speed, if both values are set to the maximum, it will be considered equivalent to enabling the [maximum fan speed mode](/cli#fanmax).
 
 #### FanLevelMin
 
@@ -271,10 +271,10 @@ Where:
 
 * `<FanPrograms>` is the root element all programs are contained within
 * `<Program Name="value">` is a container for each fan program entry
-* `<FanMode>` is a case-sensitive [string](#string) that matches the [fan performance mode](/cli/#fanmode) to be kept as long as the program is active
-* `<GpuPower>` is a case-sensitive [string](#string) that matches the [GPU power level](/cli/#gpu) to be kept as long as the program is active
+* `<FanMode>` is a case-sensitive [string](#string) that matches the [fan performance mode](/cli#fanmode) to be kept as long as the program is active
+* `<GpuPower>` is a case-sensitive [string](#string) that matches the [GPU power level](/cli#gpu) to be kept as long as the program is active
 * `<Level Temperature="value">`, with `value` being a [number](#numerical), is a container for fan settings at a given temperature level. When the fan program is running, on every update (i.e. at a given interval), it applies the fan settings for the <u>highest</u> level <u>lower</u> than the <u>maximum</u> current temperature at that moment
-* Within the `<Level>` container, `<Cpu>` and `<Gpu>` correspond to the [fan level](/cli/#fanlevel) settings for each fan respectively
+* Within the `<Level>` container, `<Cpu>` and `<Gpu>` correspond to the [fan level](/cli#fanlevel) settings for each fan respectively
 
 Note that [FanProgramDefault](#fanprogramdefault) identifies the default fan program that can optionally be toggled on or off with the _Omen_ key.
 
@@ -284,7 +284,7 @@ Note that [FanProgramDefault](#fanprogramdefault) identifies the default fan pro
 
 A [string value](#string) with no set default.
 
-When [AutoConfig](#autoconfig) is enabled, this indicates the name of the [GPU Power Level](/cli/#gpu) that will be set on startup.
+When [AutoConfig](#autoconfig) is enabled, this indicates the name of the [GPU Power Level](/cli#gpu) that will be set on startup.
 
 #### GpuPowerSetInterval
 
@@ -318,13 +318,13 @@ If the dynamic icon is enabled, temperature sensors will be queried every [Updat
 
 Temperature text is rendered dynamically but the additional system load due to this should be negligible.
 
-This value can be changed with the GUI context menu setting: [Settings](/gui/#menu-settings) → [Dynamic Icon](/gui/#dynamic-icon)
+This value can be changed with the GUI context menu setting: [Settings](/gui#menu-settings) → [Dynamic Icon](/gui#dynamic-icon)
 
 #### GuiDynamicIconHasBackground
 
 A [Boolean value](#boolean) that defaults to **false**.
 
-Whether the dynamic icon, if enabled with [GuiDynamicIcon](#guidynamicicon), has a dynamic background or not. Dynamic background is a <span style="background-image: linear-gradient(90deg, #ff0802, #ac02ff); color: white; font-weight: bold; padding: 0em 0.2em;">warm</span> gradient in _Performance_ [mode](/cli/#fanmode):
+Whether the dynamic icon, if enabled with [GuiDynamicIcon](#guidynamicicon), has a dynamic background or not. Dynamic background is a <span style="background-image: linear-gradient(90deg, #ff0802, #ac02ff); color: white; font-weight: bold; padding: 0em 0.2em;">warm</span> gradient in _Performance_ [mode](/cli#fanmode):
 
 ![Dynamic Notification Icon with Warm Background](/pic/gui-notify-icon-bgwarm.png)
 
@@ -334,9 +334,9 @@ Or a <span style="background-image: linear-gradient(0deg, #8804ff, #03ef9b); col
 
 Since it appears the hardware has a tendency to sometimes drop out of the _Performance_ mode on its own, it might be useful to periodically check this if you are aiming for maximum performance. Note however that a fan program will also maintain the set mode automatically, so this is just for the informational value.
 
-This adds an extra Embedded Controller query every [UpdateIconInterval](#updateiconinterval) seconds and some additional load, which should still be negligible: the background image is cached, and only redrawn when switching to or from the _Performance_ [mode](/cli/#fanmode).
+This adds an extra Embedded Controller query every [UpdateIconInterval](#updateiconinterval) seconds and some additional load, which should still be negligible: the background image is cached, and only redrawn when switching to or from the _Performance_ [mode](/cli#fanmode).
 
-This value can be changed with the GUI context menu setting: [Settings](/gui/#menu-settings) → [Dynamic Background](/gui/#dynamic-background)
+This value can be changed with the GUI context menu setting: [Settings](/gui#menu-settings) → [Dynamic Background](/gui#dynamic-background)
 
 If [GuiDynamicIcon](#guidynamicicon) is set to **false**, the value of this setting is irrelevant.
 
@@ -358,7 +358,7 @@ These notifications can be annoying, so the feature is used sparingly: the only 
 
 <img alt="Balloon Notification Tip" src="/pic/gui-notify-tip-balloon.png" width="50%" />
 
-A facility is implemented to relay important [fan program](/gui/#fan_program) messages (such as potential overheating) as balloon tips but it is not being used for anything so far.
+A facility is implemented to relay important [fan program](/gui#fan_program) messages (such as potential overheating) as balloon tips but it is not being used for anything so far.
 
 Setting this to **0** disables this type of notification entirely.
 
@@ -423,13 +423,13 @@ subsequent _Omen_ key presses toggle the [FanProgramDefault](#fanprogramdefault)
 
 A [numerical value](#numerical) that defaults to **165**. The unit is times per second or Hertz [Hz].
 
-Preset value to be used for [Graphics](/gui/#menu-graphics) → [High Refresh Rate](/gui/#refresh-rate).
+Preset value to be used for [Graphics](/gui#menu-graphics) → [High Refresh Rate](/gui#refresh-rate).
 
 #### PresetRefreshRateLow
 
 A [numerical value](#numerical) that defaults to **60**. The unit is times per second or Hertz [Hz].
 
-Preset value to be used for [Graphics](/gui/#menu-graphics) → [Standard Refresh Rate](/gui/#refresh-rate).
+Preset value to be used for [Graphics](/gui#menu-graphics) → [Standard Refresh Rate](/gui#refresh-rate).
 
 ### Update Intervals {#update}
 

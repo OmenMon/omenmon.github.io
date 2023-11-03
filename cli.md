@@ -18,7 +18,7 @@ title: Command Line
 * [Fan Control Program Operations](#prog) / [Task Operations](#task)
 * [Data Input Formats](#in) / [Error Messages](#error)
 
-**OmenMon** runs in command-line mode if any command-line arguments are provided. Otherwise, it just launches the [GUI](/gui/).
+**OmenMon** runs in command-line mode if any command-line arguments are provided. Otherwise, it just launches the [GUI](/gui).
 
 ![Command-line usage information](/pic/cli-usage.png)
 
@@ -138,8 +138,8 @@ Where `<Color>` is either:
 
 * Four colon-separated hexadecimal RGB color values `<RGB0>:<RGB1>:<RGB2>:<RGB3>`
   * Where `<RGB#>` is `000000-FFFFFF` each
-  * This is also the color preset specification format both in the [configuration file](/config/#color-presets) and the [GUI](/gui/)
-* A configuration [color preset](/config/#color-presets)
+  * This is also the color preset specification format both in the [configuration file](/config#color-presets) and the [GUI](/gui)
+* A configuration [color preset](/config#color-presets)
 
 ![Command-line BIOS color preset setting](/pic/cli-bios-set.png)
 
@@ -263,7 +263,7 @@ This value cannot be queried via the BIOS, however it can be retrieved from the 
 * `-Bios FanTable` Retrieve and interpret the fan speed-level table
 * `-Bios FanTable=<FanTable>` Rewrite the fan speed-level table with the given values
 
-The fan table is a 128-byte structure with a specific format. On the **OmenMon** author's laptop, it contains some defaults that however seem to never apply. For experimentation, the preset is reproduced in the [example configuration file](/config/#example) under the name _"OEM Test"_.
+The fan table is a 128-byte structure with a specific format. On the **OmenMon** author's laptop, it contains some defaults that however seem to never apply. For experimentation, the preset is reproduced in the [example configuration file](/config#example) under the name _"OEM Test"_.
 
 Changes to the table seem to take no effect. However, the functionality to retrieve and set it is added for completeness so that it can be tested on other devices. The entries can be specified as colon-separated per-level definitions with three comma-separated byte-sized values: `<Fan1>,<Fan2>,<Temp>[:...[:...]]` where:
   * `<Fan#>` is the level of a given fan as used with [FanLevel](#fanlevel), i.e. a value in thousands of revolutions per minute [krpm]
@@ -370,7 +370,7 @@ public enum GpuPowerLevel : byte {
 }
 ````
 
-If changes to these settings do not seem to take effect on first try, particularly when downgrading performance, i.e. switching from `Maximum` to `Medium` or `Minimum`, you might want to try adjusting the [GpuPowerSetInterval](/config/#gpupowersetinterval) configuration setting.
+If changes to these settings do not seem to take effect on first try, particularly when downgrading performance, i.e. switching from `Maximum` to `Medium` or `Minimum`, you might want to try adjusting the [GpuPowerSetInterval](/config#gpupowersetinterval) configuration setting.
 
 ### GpuMode
 
@@ -796,7 +796,7 @@ Aliases can be used to reference the Embedded Controller registers. These mostly
 
 The monitor will keep running indefinitely. To terminate it, press <kbd>Ctrl</kbd>-<kbd>C</kbd>.
 
-To control how often the readings are updated, use the [EcMonInterval](/config/#ecmoninterval) configuration setting.
+To control how often the readings are updated, use the [EcMonInterval](/config#ecmoninterval) configuration setting.
 
 ### Saving Data to a File {#ecmon-save}
 
@@ -820,7 +820,7 @@ Where:
 * The file starts with `#\Reg` as a hint to the meaning of the colums and rows
 * Each **column** is an Embedded Controller register (here, these are `0x13`, `0x2c`, `0x2d` and `0x31`)
 * Each **row** is the register value at the given point in time, specifically:
-  * `nnnnn` × [EcMonInterval](/config/#ecmoninterval) milliseconds [ms] since the monitoring started
+  * `nnnnn` × [EcMonInterval](/config#ecmoninterval) milliseconds [ms] since the monitoring started
 
 In other words, the text-file output is transposed from the screen output, where the registers appear vertically.
 
@@ -833,7 +833,7 @@ In other words, the text-file output is transposed from the screen output, where
 
 The program will keep running indefinitely. To terminate it, press <kbd>Ctrl</kbd>-<kbd>C</kbd>.
 
-For more details regarding this functionality, see [Fan Programs](config/#fan-programs).
+For more details regarding this functionality, see [Fan Programs](config#fan-programs).
 
 ## Task Operations {#task}
 
@@ -846,7 +846,7 @@ For more details regarding this functionality, see [Fan Programs](config/#fan-pr
 The available tasks are as follows:
 
 * `Gui` will start the application automatically whenever a user logs in
-* `Key` will trigger whenever the _Omen_ key is pressed to launch the application and perform an action in accordance with the [KeyCustomAction](/config/#key) and [KeyToggleFanProgram](/config/#keytogglefanprogram) configuration settings
+* `Key` will trigger whenever the _Omen_ key is pressed to launch the application and perform an action in accordance with the [KeyCustomAction](/config#key) and [KeyToggleFanProgram](/config#keytogglefanprogram) configuration settings
 * `Mux` will trigger whenever the _nVidia Advanced Optimus_ switches the GPU, and if the discrete GPU is being enabled the first time following a reboot, it will:
   * Reapply the color profile -- to workaround the bug where the color profile is not being applied
   * Restart the _Windows Explorer_ shell -- to workaround the bug where the screen stutters
