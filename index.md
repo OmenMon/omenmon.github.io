@@ -10,9 +10,9 @@ title: OmenMon
 
 **OmenMon** endeavors to replace all the useful functionality of the _Omen Hub_ (a.k.a. _Omen Control Center_), the laptop manufacturer's application, without any of its numerous anti-features. It does not connect to the network at all, does not have advertising, built-in store, social-media integration and whatnot. It does only what you expect it to do and nothing else.
 
-**OmenMon** is designed to run with minimal resource overhead. It comes with a clear and compact [graphical interface](/gui) with a great degree of [configurability](/config) while also featuring an extensive [command-line mode](/cli) where various BIOS and EC read and write operations can be performed manually. 
+**OmenMon** is designed to run with minimal resource overhead. It comes with a clear and compact [graphical interface](/gui), offering a great degree of [configurability](/config) while also featuring an extensive [command-line mode](/cli) where various BIOS and EC read and write operations can be performed manually. 
 
-Most features are specific to _HP_ devices with a compatible BIOS interface exposed by the `ACPI\PNP0C14` driver but command-line Embedded Controller operations should work on all laptops.
+Most features are specific to _HP_ devices with a compatible BIOS interface exposed by the `ACPI\PNP0C14` driver but command-line [Embedded Controller operations](/cli#ec) should work on all laptops.
 
 ## OmenMon vs the Goliath
 
