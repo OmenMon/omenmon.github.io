@@ -21,7 +21,7 @@ defaults:
       menu:
         -
           link: /
-          text: About
+          text: Intro
         -
           link: /features/
           text: Features
