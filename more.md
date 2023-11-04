@@ -75,10 +75,12 @@ title: Other Info
 
 ## Version History
 
-### 0.50 (2023-11-03)
+### 0.50 (2023-11-04)
 
   * Initial public preview
-  * Provide a complete documentation at [omenmon.github.io](https://omenmon.github.io/)
+  * Publish a complete documentation at [omenmon.github.io](https://omenmon.github.io/)
+  * Publish an XML translation template at [github.com/OmenMon/Localization](https://github.com/OmenMon/Localization)
+  * Detect _PowerShell_ console to workaround output issues
 
 ### 0.49
 
