@@ -55,8 +55,6 @@ A **balloon tip** can appear to relay important messages:
 
 ## Context Menu {#menu}
 
-<img alt="OmenMon Context Menu" src="/pic/gui-menu.png" width="75%" />
-
 **Right**-clicking on the notification area icon brings up the context menu.
 
 The top of the context menu shows the following:
@@ -65,6 +63,8 @@ The top of the context menu shows the following:
 * Optional [translator credit](/config#messages) -- only if using a translated version
 
 The menu stays open even when clicked on, to facilitate changing multiple settings in one go. To close the context menu, click anywhere outside of it, for example on the desktop.
+
+<img alt="OmenMon Context Menu" src="/pic/gui-menu.png" width="75%" />
 
 Most of the items are grouped into one of the four **submenus**: [Fan](#menu-fan), [Graphics](#menu-graphics), [Keyboard](#menu-keyboard) and [Settings](#menu-settings), except the following two on the bottom:
 
