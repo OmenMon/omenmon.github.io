@@ -75,6 +75,10 @@ title: Other Info
 
 ## Version History
 
+### 0.53 (2023-11-06)
+
+  * Update missing localization string for _Unknown_ throttling status (introduced in 0.51)
+
 ### 0.52 (2023-11-05)
 
   * Fix `DynamicIcon` and `DynamicIconHasBackground` configuration settings not being saved
