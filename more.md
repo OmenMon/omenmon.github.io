@@ -75,6 +75,11 @@ title: Other Info
 
 ## Version History
 
+### 0.51 (2023-11-05)
+
+  * Resolve the issue when a BIOS call to check throttling status results in an unhandled exception where not supported. The call is not supported on 2023 models where it yields BIOS error code 6. The status will now be reported as _Unknown_ in these scenarios. Thank you to **[@breadeding](https://github.com/breadeding)** for contributing information that made it possible to fix this issue.
+  * Main window title consistency fix
+
 ### 0.50 (2023-11-04)
 
   * Initial public preview

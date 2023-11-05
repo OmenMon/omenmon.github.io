@@ -584,10 +584,13 @@ public struct SystemData {
 ````csharp
 // Throttling
 public enum Throttling : byte {
+    Unknown = 0x00,  // Unknown state (BIOS call failed)
     On      = 0x01,  // Thermal throttling enabled
     Default = 0x04   // Observed default state
 }
 ````
+
+<u>Note</u>: On 2023 models, this seems to return BIOS error code 6. In such scenarios (i.e. when the BIOS call fails), the status will be reported as `0x00` _Unknown_.
 
 ### Xmp
 
