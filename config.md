@@ -632,6 +632,9 @@ An extensively-annotated sample configuration file is distributed with the appli
         <!-- Whether closing the window closes the whole application -->
         <GuiCloseWindowExit>false</GuiCloseWindowExit>
 
+        <!-- Whether to resize the main window if DPI changes -->
+        <GuiDpiChangeResize>false</GuiDpiChangeResize>
+
         <!-- Whether to use a dynamic notification icon by default
              (icon text shows current temperature) -->
         <GuiDynamicIcon>true</GuiDynamicIcon>
@@ -642,6 +645,9 @@ An extensively-annotated sample configuration file is distributed with the appli
 
         <!-- Whether the main window stays on top of all other windows -->
         <GuiStayOnTop>false</GuiStayOnTop>
+
+        <!-- Override System Information font size (leave 0 for the default) -->
+        <GuiSysInfoFontSize>0</GuiSysInfoFontSize>
 
         <!-- How long to show a tip in the notification area for [ms]
              (0 to disable entirely; the default setting of 30000, or 30 s,
