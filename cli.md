@@ -375,7 +375,7 @@ If changes to these settings do not seem to take effect on first try, particular
 ### GpuMode
 
 * `-Bios GpuMode` Retrieve and interpret the current GPU mode
-* `-Bios GpuMode=<GpuMode>` Switch the graphics mode (a reboot is required)
+* `-Bios GpuMode=<GpuMode>` Switch the GPU mode (a reboot is required)
 
 ````csharp
 // Graphics mode (predates Advanced Optimus)
@@ -388,6 +388,8 @@ public enum GpuMode : byte {
 ````
 
 On the author's system, this seems to toggle between `Discrete` and `Optimus`. The value for `Hybrid` is never used.
+
+On models that do not support GPU mode switching, the call to retrieve GPU mode will silently fail and return `Hybrid`. For GPU mode switching capability check, see byte #7 of the [System](#system) data. Manual GPU mode setting is still allowed on systems that do not support it but is likely to return an error.
 
 This is <u>not</u> _Advanced Optimus_ but the equivalent of the setting available in the _UEFI (BIOS) Setup_. A reboot is required for it to take effect. However, being able to toggle the setting programmatically still saves the hassle of having to open the _Setup_ menu every time.
 

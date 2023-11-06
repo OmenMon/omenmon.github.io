@@ -302,6 +302,12 @@ Whether closing the window closes the whole application -- if **true**, or the a
 
 The application needs to run in the background for the custom fan programs to work. It can however be launched with the _Omen_ key even when not currently running.
 
+#### GuiDpiChangeResize
+
+A [Boolean value](#boolean) that defaults to **false**.
+
+Whether the application window should be automatically resized in response to DPI changes.
+
 #### GuiDynamicIcon
 
 A [Boolean value](#boolean) that defaults to **false**.
@@ -347,6 +353,14 @@ A [Boolean value](#boolean) that defaults to **false**.
 Whether the application window stays on top of all other windows or not.
 
 This value can be changed with the GUI context menu setting: _Settings_ → _Stay on Top_
+
+#### GuiSysInfoFontSize
+
+A [numerical value](#numerical) that defaults to **0**. The unit is pixels [px].
+
+Override the default font size for the _System Information & Status_ area. This is mainly intended as a workaround for the situation when the text does not fit in the box due to the line height being larger on systems where the default regional settings are set to a non-alphabetic language such as Chinese. In such cases, **14** seems to be a good value; on systems using the Latin alphabet by default, **17** is the maximum size that fits into the box.
+
+Setting this to **0** leaves the font size at its automatic default.
 
 #### GuiTipDuration
 
