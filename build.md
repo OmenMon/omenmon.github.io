@@ -23,7 +23,7 @@ Earlier _C#_ versions would not work without some code having to be rewritten. T
 
 * Download [Microsoft Build Tools for VS2022](https://aka.ms/vs/17/release/vs_BuildTools.exe) 
 * Install: `vs_buildtools.exe --add Microsoft.VisualStudio.Workload.MSBuildTools --quiet`
-* Checkout or download the main [OmenMon](https://github.com/OmenMon/OmenMon) repository and the separate [OmenMon Resources](https://github.com/OmenMonResources) repository
+* Checkout or download the main [OmenMon](https://github.com/OmenMon/OmenMon) repository and the separate [OmenMon Resources](https://github.com/OmenMon/Resources) repository
 
 ### Using Make {#make}
 
