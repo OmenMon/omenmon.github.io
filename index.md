@@ -14,7 +14,7 @@ title: OmenMon
 
 Most features are specific to _HP_ devices with a compatible BIOS interface exposed by the `ACPI\PNP0C14` driver but command-line [Embedded Controller operations](/cli#ec) should work on all laptops.
 
-## OmenMon vs the Goliath
+## OmenMon vs Goliath
 
 | Feature                 | Omen Hub |  OmenMon | Comparison       |
 |:------------------------|:--------:|:--------:|:-----------------|

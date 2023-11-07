@@ -51,11 +51,15 @@ This program is _free software_: you can redistribute it and/or modify it under 
 * Inspired by [Notebook Fan Control](https://github.com/hirschmann/nbfc)
   * Copyright © 2012-2019 Stefan Hirschmann
 
-* Tray icon font is a variation of [Iosevka](https://be5invis.github.io/Iosevka), modified with [FontForge](https://fontforge.org/)
-  * Copyright © 2015-2023 Renzhi Li (aka Belleve Invis)
+* Font used for some of the figures (numbers), including the temperature dynamic notification icon, is a variation of [Iosevka](https://be5invis.github.io/Iosevka)
+  * Copyright © 2015-2023 [Renzhi Li](https://typeof.net/) (aka Belleve Invis)
   * Licensed under the [SIL Open Font License 1.1](https://scripts.sil.org/OFL)
+  * Modified with [FontForge](https://fontforge.org/) for application-specific use
 
-* Artwork designed in [Inkscape](https://inkscape.org/) and converted to the `.ico` format with [icoutils](https://www.nongnu.org/icoutils/)
+* OmenMon logo artwork, icons, and keyboard diagram
+  * Copyright © 2023 [Piotr Szczepański](https://piotr.szczepanski.name)
+  * Licensed under the terms of the [CC BY-NC-ND 4.0](http://creativecommons.org/licenses/by-nc-nd/4.0/)
+  * Designed in [Inkscape](https://inkscape.org/) and converted to the `.ico` format with [icoutils](https://www.nongnu.org/icoutils/)
 
 ### Web Page
 

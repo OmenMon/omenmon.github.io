@@ -23,6 +23,7 @@ Earlier _C#_ versions would not work without some code having to be rewritten. T
 
 * Download [Microsoft Build Tools for VS2022](https://aka.ms/vs/17/release/vs_BuildTools.exe) 
 * Install: `vs_buildtools.exe --add Microsoft.VisualStudio.Workload.MSBuildTools --quiet`
+* Checkout or download the main [OmenMon](https://github.com/OmenMon/OmenMon) repository and the separate [Resources](https://github.com/Resources) repository
 
 ### Using Make {#make}
 
@@ -76,8 +77,10 @@ Earlier _C#_ versions would not work without some code having to be rewritten. T
 
 ### 0.55 (2023-11-07)
 
-  * Publish the source code
-  * Rearrange documentation: include the license, improve build instructions to cover setting assembly version via a build property
+  * Build process updates to allow setting version number dynamically in preparation for _GitHub_ build workflow
+  * Minor code changes and comment improvements pending the public release of the source code
+  * Publish the source code; additionally, publish [a separate repository](https://github.com/OmenMon/Resources) with non-GPL3 components
+  * Reorganize the documentation: include the license, improve build instructions to cover setting assembly version via a build property
   * Add `BiosErrorReporting` configuration setting to optionally ignore BIOS errors instead of throwing an exception (for use with not fully-compatible models)
   * First build to be completed using the _GitHub_ workflow
 

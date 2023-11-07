@@ -403,8 +403,7 @@ When using the trackbars for setting the custom fan speed, keep in mind the foll
 * The lowest position corresponds to level 20 and the highest -- to level 55, that is 2,000 and 5,500 rpm respectively
   * These can be adjusted with [FanLevelMax](/config#fanlevelmax) and [FanLevelMin](/config#fanlevelmin)
 * If the lowest position is selected, it is interpreted as a 0
-  * However, the hardware constraint that **at least one fan must be running at any given time** is upheld
-  * If you want both fans off entirely, which is generally not a good idea, use the **Off** setting
+  * However, the hardware constraint is that at least one fan must be running at any given time, so if you set both trackbars to their lowest setting, the **Off** setting will be used instead to keep fans disabled. Note that the implications of keeping both fans off for extended periods of time have not been extensively evaluated.
 
 Remember to press the <span style="background-image: linear-gradient(45deg, #ff0802, #ac02ff); padding: 0.2em 0.2em 0.3em;"><span style="background-color: white; font-weight: bold; padding: 0em 0.2em 0.1em">`✓`</span></span> button to apply the settings afterwards.
 
