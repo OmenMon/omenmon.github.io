@@ -25,6 +25,8 @@ title: Features
 
 * Can use your language
 
+* Open source (GPL3)
+
 ### Keyboard Backlight Control
 
 <img alt="Keyboard Backlight Control" src="/pic/gui-main-kbd.png" width="50%" />

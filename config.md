@@ -119,6 +119,12 @@ Note: it might be a bit counter-intuitive how this works but if you are <u>not</
 
 The latter also changes the value for this setting.
 
+#### BiosErrorReporting
+
+A [Boolean value](#boolean) that defaults to **true**.
+
+The default behavior is to throw an exception if a BIOS call returns an error response. If set to **false**, BIOS errors will be silently ignored instead. This makes it possible to try using the application with hardware that is not fully compatible.
+
 ### Color Presets {#color}
 
 Keyboard backlight color preset entries follow the convention:
@@ -509,6 +515,9 @@ An extensively-annotated sample configuration file is distributed with the appli
 
         <!-- Automatically start up with Windows -->
         <AutoStartup>true</AutoStartup>
+
+        <!-- Ignore BIOS errors if false (for not fully compatible devices) -->
+        <BiosErrorReporting>true</BiosErrorReporting>
 
         <!-- Color Backlight -->
 

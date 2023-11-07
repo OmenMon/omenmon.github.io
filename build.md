@@ -3,10 +3,13 @@ suppress_logo: true
 title: Building
 ---
 
-# Building OmenMon
+# Build Information
 
 * [Build Instructions](#instructions) -- [Using Make](#make)
 * [Project Structure](#structure) -- [Source Layout](#layout) / [Binaries](#binaries)
+* [Version History](#history)
+
+## Build Instructions {#instructions}
 
 **OmenMon** is written in _C# 11_ targeting _.NET Framework 4.8.1_. Earlier framework versions should work as well but the choice to go with the latest was made due to the possible DPI awareness handling (user interface scaling) improvements.
 
@@ -18,8 +21,6 @@ Earlier _C#_ versions would not work without some code having to be rewritten. T
 
 <u>Note</u>: the application has not been designed with the _Visual Studio GUI_. All of the code is hand-written and very different from what Visual Studio would automatically generate. As a result, it might not be possible to use GUI tools such as the _Forms Designer_ or _Resource Manager_ while working with the project.
 
-## Build Instructions {#instructions}
-
 * Download [Microsoft Build Tools for VS2022](https://aka.ms/vs/17/release/vs_BuildTools.exe) 
 * Install: `vs_buildtools.exe --add Microsoft.VisualStudio.Workload.MSBuildTools --quiet`
 
@@ -29,6 +30,7 @@ Earlier _C#_ versions would not work without some code having to be rewritten. T
   * There are currently no external package dependencies, so this step can be skipped
 * Build with `make build` started from the project root directory
   * Depending on the build environment, you might need to edit the path to `msbuild.exe` inside `make.cmd`
+  * You can set the assembly version number and word using build properties: `-p:AssemblyVersion=1.2.3.4 -p:AssemblyVersionWord=Custom`, an `AssemblyMetadata` `Timestamp` field will be added automatically in such scenarios with the format `yyyy-MM-dd HH:mm`
 * To test some of the functionality, run `make test`
   * Note: this will change the keyboard backlight color for testing purposes
 * To tidy up, use `make clean`. This does not remove the downloaded packages, if any.
@@ -69,3 +71,236 @@ Earlier _C#_ versions would not work without some code having to be rewritten. T
 * `Obj` Intermediate build data, safe to delete with `make clean`
 * `Packages` Third-party dependencies: safe to delete, re-download with `make prepare`
   * This is provided just in case for future extensibility, as there are currently no such dependencies
+
+## Version History {#history}
+
+### 0.55 (2023-11-07)
+
+  * Publish the source code
+  * Rearrange documentation: include the license, improve build instructions to cover setting assembly version via a build property
+  * Add `BiosErrorReporting` configuration setting to optionally ignore BIOS errors instead of throwing an exception (for use with not fully-compatible models)
+  * First build to be completed using the _GitHub_ workflow
+
+### 0.54 (2023-11-06)
+
+  * Make platform fan and temperature array setup model-dependent
+  * Make BIOS calls to retrieve GPU mode not raise an exception on unsupported models, hide the menu items related to GPU mode in such scenarios
+  * Add `GuiDpiChangeResize` configuration option to set whether the window should be automatically resized in response to DPI changes
+  * Add `GuiSysInfoFontSize` configuration option to override the font size used for _System Information & Status_
+
+### 0.53 (2023-11-06)
+
+  * Update missing localization string for _Unknown_ throttling status (introduced in 0.51)
+
+### 0.52 (2023-11-05)
+
+  * Fix `DynamicIcon` and `DynamicIconHasBackground` configuration settings not being saved
+  * Resolve the issue when unless the main window is being shown, temperature sensors are not updated before calculating maximum temperature. Thank you to **[@wangzhengbin](https://github.com/wangzhengbin)** for reporting this issue.
+
+### 0.51 (2023-11-05)
+
+  * Resolve the issue when a BIOS call to check throttling status results in an unhandled exception where not supported. The call is not supported on 2023 models where it yields BIOS error code 6. The status will now be reported as _Unknown_ in these scenarios. Thank you to **[@breadeding](https://github.com/breadeding)** for contributing information that made it possible to fix this issue.
+  * Main window title consistency fix
+
+### 0.50 (2023-11-04)
+
+  * Initial public preview
+  * Publish a complete documentation at [omenmon.github.io](https://omenmon.github.io/)
+  * Publish an XML translation template at [github.com/OmenMon/Localization](https://github.com/OmenMon/Localization)
+  * Detect _PowerShell_ console to workaround output issues
+
+### 0.49
+
+  * In anticipation that some of the routines may fail on different hardware (since it's only been tested on the author's laptop), add more attempts to catch exceptions that never occured in the tests thus far
+
+### 0.48
+
+  * Minor bugfixes throughout the whole application
+
+### 0.47
+
+  * Workaround dynamic notification icon issue: if icon handle is freed, icon will disappear until the next refresh if the notification text changes; not freeing the handle apparently eventually leads to a "generic error in GDI+." The issue is resolved by storing the previous icon handle and freeing it but only just before the icon is about to be updated anyway.
+
+### 0.46
+
+  * Optimize the automatic configuration process for faster initial loading (start the fan program in a separate thread if at launch)
+
+### 0.45
+
+  * Make the _Omen_ key optionally toggle fan program on and off if the main window is already being shown
+
+### 0.44
+
+  * Restructure the configuration settings layout, add new configuration options
+
+### 0.43
+
+  * Add a couple more of minor context-menu items
+
+### 0.42
+
+  * Improve the fan program routines and the user interface around it, including status reporting
+
+### 0.41
+
+  * Add fully-customizable fan program functionality both via the command-line and the GUI
+
+### 0.40
+
+  * Add the ability to run a fan program synchronously from the command line
+
+### 0.39
+
+  * Add fan program functionality to the GUI and make fan programs controllable through the interface alongside other modes (another intermediate step towards custom fan programs)
+
+### 0.38
+
+  * Add fan program data handling, load fan programs from the XML configuration file upon startup and save them back (an intermediate step towards custom fan programs)
+
+### 0.37
+
+  * Replace the inactive `IRSN` Embedded Controller temperature sensor with the temperature reported by the BIOS
+
+### 0.36
+
+  * Add the option to reload the color profile to the context menu
+
+### 0.35
+
+  * Implement system information and system status message functionality
+
+### 0.34
+
+  * User interface enhancements
+
+### 0.33
+
+  * Add fan controls to the GUI
+
+### 0.32
+
+  * Add real-time fan monitoring to the GUI
+
+### 0.31
+
+  * Refactor and consolidate between the CLI and the GUI the code referencing low-level BIOS and embedded controller operations
+
+### 0.30
+
+  * Improve localizable message and global-scope identifier consistency
+
+### 0.29
+
+  * Add real-time temperature monitoring to the GUI
+
+### 0.28
+
+  * Add hardware platform classes for abstracted sensor and fan control support
+
+### 0.27
+
+  * In a scenario when the DPI changes while the application is running, resize the main form in response to the DPI update
+
+### 0.26
+
+  * Add a simple _About_ dialog, also reused for caught exception error messages
+
+### 0.25
+
+  * _Omen_ key event handling improvements, close the form if the key is pressed when the form is already open
+
+### 0.24
+
+  * Automatically save the configuration, including color presets when changed, back to the configuration XML file
+
+### 0.23
+
+  * Implement the GUI functionality for color setting with instant updates
+
+### 0.22
+
+  * Add keyboard color setting through a preset to the CLI mode, also resolve read and written color values as preset names
+
+### 0.21
+
+  * Add keyboard line art to the main window, dynamically recolored every time the colors are updated
+
+### 0.20
+
+  * Designed the main window for monitoring and control in GUI mode
+
+### 0.19
+
+  * Display refresh rate adjustment via the GUI context menu
+
+### 0.18
+
+  * Optional customizable action for the _Omen_ key in the XML configuration file
+
+### 0.17
+
+  * Add _Omen_ key handler and an improved _Advanced Optimus_ fix, install and remove these tasks from either CLI or GUI (this completes the porting of the [OmenHwCtl](https://github.com/GeographicCone/OmenHwCtl) functionality)
+
+### 0.16
+
+  * Add task scheduling via the COM interface (an intermediate step towards porting the rest of the [OmenHwCtl](https://github.com/GeographicCone/OmenHwCtl) functionality)
+
+### 0.15
+
+  * Enable the changing of the settings through the GUI context menu interface
+
+### 0.14
+
+  * Add automatic startup and automatic configuration in GUI mode
+
+### 0.13
+
+  * Optionally provide a dynamic notification icon with custom font and dynamic background
+
+### 0.12
+
+  * Limit GUI mode to only a single instance, show a notification if already running; optimization of console routines
+
+### 0.11
+
+  * Add GUI mode, with the application starting minimized to tray by default
+
+### 0.10
+
+  * Add configuration variables loaded from an external XML file
+
+### 0.09
+
+  * Print out embedded controller register names in queries and in monitor, as well as allow referencing registers by their name instead of numerical value
+
+### 0.08
+
+  * Refactor the code and add support for message customization (localization) loaded from an external XML file
+
+### 0.07
+
+  * Improve the syntax versatility of BIOS command-line operations
+
+### 0.06
+
+  * Command-line support for BIOS controls (ported from [OmenHwCtl](https://github.com/GeographicCone/OmenHwCtl))
+
+### 0.05
+
+  * Support for BIOS controls via a WMI (CIM) interface
+
+### 0.04
+
+  * Support running either as a _Windows_ GUI or a console app within the same executable
+
+### 0.03
+
+  * Command-line support for embedded controller register monitoring (inspired by [NBFC](https://github.com/hirschmann/nbfc)'s `ec-probe`)
+
+### 0.02
+
+  * Command-line support for embedded controller queries
+
+### 0.01
+
+  * Embedded controller hardware interaction implementation by means of kernel-mode _Ring 0_ driver
