@@ -23,7 +23,7 @@ Earlier _C#_ versions would not work without some code having to be rewritten. T
 
 * Download [Microsoft Build Tools for VS2022](https://aka.ms/vs/17/release/vs_BuildTools.exe) 
 * Install: `vs_buildtools.exe --add Microsoft.VisualStudio.Workload.MSBuildTools --quiet`
-* Checkout or download the main [OmenMon](https://github.com/OmenMon/OmenMon) repository and the separate [Resources](https://github.com/Resources) repository
+* Checkout or download the main [OmenMon](https://github.com/OmenMon/OmenMon) repository and the separate [OmenMon Resources](https://github.com/OmenMonResources) repository
 
 ### Using Make {#make}
 
@@ -31,7 +31,8 @@ Earlier _C#_ versions would not work without some code having to be rewritten. T
   * There are currently no external package dependencies, so this step can be skipped
 * Build with `make build` started from the project root directory
   * Depending on the build environment, you might need to edit the path to `msbuild.exe` inside `make.cmd`
-  * You can set the assembly version number and word using build properties: `-p:AssemblyVersion=1.2.3.4 -p:AssemblyVersionWord=Custom`, an `AssemblyMetadata` `Timestamp` field will be added automatically in such scenarios with the format `yyyy-MM-dd HH:mm`
+  * You can set the assembly version number and word using build properties: `-p:AssemblyVersion=1.2.3.4 -p:AssemblyVersionWord=Custom`
+  * In the above scenario, an `AssemblyMetadata` `Timestamp` field will be added automatically with the format `yyyy-MM-dd HH:mm`
 * To test some of the functionality, run `make test`
   * Note: this will change the keyboard backlight color for testing purposes
 * To tidy up, use `make clean`. This does not remove the downloaded packages, if any.
@@ -80,8 +81,8 @@ Earlier _C#_ versions would not work without some code having to be rewritten. T
   * Build process updates to allow setting version number dynamically in preparation for _GitHub_ build workflow
   * Minor code changes and comment improvements pending the public release of the source code
   * Publish the source code; additionally, publish [a separate repository](https://github.com/OmenMon/Resources) with non-GPL3 components
-  * Reorganize the documentation: include the license, improve build instructions to cover setting assembly version via a build property
-  * Add `BiosErrorReporting` configuration setting to optionally ignore BIOS errors instead of throwing an exception (for use with not fully-compatible models)
+  * Reorganize the documentation: add license information, improve build instructions to cover setting assembly version via a build property and merging the files from the separate _Resources_ repository
+  * Add `BiosErrorReporting` configuration setting to optionally ignore BIOS errors instead of throwing an exception
   * First build to be completed using the _GitHub_ workflow
 
 ### 0.54 (2023-11-06)
