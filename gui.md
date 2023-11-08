@@ -153,7 +153,7 @@ These two mutually-exclusive settings control the choice of the GPU. Note that t
 
 This is equivalent to changing the pertinent setting in the _UEFI Setup_ but saves you the trip. A reboot is required, and you will be prompted whether you want to proceed with it at once.
 
-<u>Note</u>: This part of the menu does not appear on models without GPU mode switching support as reported by the [BIOS system data](/cli#system). You can still attempt to switch the mode manually [from the command line](/cli#gpumode), although it is likely to result in an error.
+<u>Note</u>: This part of the menu is not enabled on models without GPU mode switching support as reported by the [BIOS system data](/cli#system). You can still attempt to switch the mode manually [from the command line](/cli#gpumode), although it is likely to result in an error.
 
 ### Keyboard {#menu-keyboard}
 

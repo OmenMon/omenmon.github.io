@@ -76,14 +76,17 @@ Earlier _C#_ versions would not work without some code having to be rewritten. T
 
 ## Version History {#history}
 
-### 0.55 (2023-11-07)
+### 0.55 (2023-11-08)
 
   * Build process updates to allow setting version number dynamically in preparation for _GitHub_ build workflow
   * Minor code changes and comment improvements pending the public release of the source code
   * Publish the source code; additionally, publish [a separate repository](https://github.com/OmenMon/Resources) with non-GPL3 components
   * Reorganize the documentation: add license information, improve build instructions to cover setting assembly version via a build property and merging the files from the separate _Resources_ repository
+  * First build to be completed using the automated _GitHub_ workflow
   * Add `BiosErrorReporting` configuration setting to optionally ignore BIOS errors instead of throwing an exception
-  * First build to be completed using the _GitHub_ workflow
+  * Disable GPU mode-switching menu items instead of hiding them (introduced in 0.54)
+  * Improve the _PowerShell_ console workaround and catch the exception it might cause (reported by **[@Kubagf](https://github.com/Kubagf)**)
+  * Fix the issue where model-dependent platform fan and temperature array setup did not properly define the default case: thank you **[@Dragofagnir](https://github.com/Dragofagnir)** and **[@Wangzhebin](https://github.com/wangzhebin)** 
 
 ### 0.54 (2023-11-06)
 
