@@ -86,7 +86,7 @@ Earlier _C#_ versions would not work without some code having to be rewritten. T
   * Add `BiosErrorReporting` configuration setting to optionally ignore BIOS errors instead of throwing an exception
   * Disable GPU mode-switching menu items instead of hiding them (introduced in 0.54)
   * Improve the _PowerShell_ console workaround and catch the exception it might cause (reported by **[@Kubagf](https://github.com/Kubagf)**)
-  * Fix the issue where model-dependent platform fan and temperature array setup did not properly define the default case: thank you **[@Dragofagnir](https://github.com/Dragofagnir)** and **[@Wangzhebin](https://github.com/wangzhebin)** 
+  * Fix the issue where model-dependent platform fan and temperature array setup did not properly define the default case: thank you **[@Dragofagnir](https://github.com/Dragofagnir)** and **[@Wangzhebin](https://github.com/Wangzhebin)** 
 
 ### 0.54 (2023-11-06)
 
@@ -102,7 +102,7 @@ Earlier _C#_ versions would not work without some code having to be rewritten. T
 ### 0.52 (2023-11-05)
 
   * Fix `DynamicIcon` and `DynamicIconHasBackground` configuration settings not being saved
-  * Resolve the issue when unless the main window is being shown, temperature sensors are not updated before calculating maximum temperature. Thank you to **[@wangzhengbin](https://github.com/wangzhengbin)** for reporting this issue.
+  * Resolve the issue when unless the main window is being shown, temperature sensors are not updated before calculating maximum temperature. Thank you to **[@Wangzhengbin](https://github.com/Wangzhengbin)** for reporting this issue.
 
 ### 0.51 (2023-11-05)
 
