@@ -76,6 +76,13 @@ Earlier _C#_ versions would not work without some code having to be rewritten. T
 
 ## Version History {#history}
 
+### 0.55.1 (2023-11-09)
+
+  * Change the default for [KeyToggleFanProgram](https://omenmon.github.io/config#keytogglefanprogram) in line with the documentation for consistency, since the sample configuration file bundled with the release also has `<FanProgramDefault>None</FanProgramDefault>`, so subsequent keypresses would appear not to work
+  * Fix translation template (`OmenMon.en_US.xml` in the [Localization](https://github.com/OmenMon/Localization) repository) issue where unnecessary backslash escape characters caused RTF control sequences to fail: thank you to @bbaallance for [the report](https://github.com/OmenMon/OmenMon/issues/1#issuecomment-1804073393)
+  * Re-enable [GPU mode switching](https://omenmon.github.io/gui#gpu-mode) also for devices that have bit #2 (`0x04`) set in byte #7 of [system design data](https://omenmon.github.io/cli#system): thanks to @ArmynC for [the report](https://github.com/OmenMon/OmenMon/issues/1#issuecomment-1804141326)
+  * Support Unicode characters other than 7-bit ASCII in rich-text fields: thank you to @bbaallance for [the report](https://github.com/OmenMon/OmenMon/issues/1#issuecomment-1804073393)
+
 ### 0.55 (2023-11-08)
 
   * Build process updates to allow setting version number dynamically in preparation for _GitHub_ build workflow

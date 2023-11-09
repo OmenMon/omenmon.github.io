@@ -497,13 +497,19 @@ The two entries shown above are a special case: by default, they are **empty**. 
 
 ## Sample Configuration {#example}
 
-An extensively-annotated sample configuration file is distributed with the application. It is also provided below for reference:
+An extensively-annotated sample configuration file is distributed with the application. It is also provided below for reference, with the difference that the version here also sets [FanProgramDefault](#fanprogramdefault) to `Power` and enables [KeyToggleFanProgram](#keytogglefanprogram).
 
 ````xml
 <?xml version="1.0" encoding="utf-8"?> 
 <OmenMon>
 
-    <!-- Configuration Settings -->
+    <!--
+
+      //\\   OmenMon: Hardware Monitoring & Control Utility
+     //  \\  Configuration Settings XML File
+         //  https://omenmon.github.io/
+
+    -->
 
     <!-- Note: comments under child nodes such as <ColorPresets> and <FanPrograms>
          will be overwritten when the file is automatically generated upon save -->

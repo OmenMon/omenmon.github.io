@@ -147,7 +147,7 @@ Clicking this item will power off the display and switch the keyboard backlight 
 
 As an exception, the menu will automatically close when you click on this item (since the screen is supposed to go off).
 
-#### Discrete Exclusive / Optimus Soft-Switching
+#### Discrete Exclusive / Optimus Soft-Switching {#gpu-mode}
 
 These two mutually-exclusive settings control the choice of the GPU. Note that this is <u>not</u> the _Advanced Optimus_ switch: _Advanced Optimus_ settings can only be changed from the _nVidia Control Panel_ or the _nVidia_ notification icon if you enabled it.
 
