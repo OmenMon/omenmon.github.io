@@ -78,7 +78,7 @@ Earlier _C#_ versions would not work without some code having to be rewritten. T
 
 ### 0.55.2 (2023-11-10)
 
-  * Disable keyboard backlight & color interface entirely on unsupported models with per-key RGB [keyboard type](https://omenmon.github.io/cli#kbdtype) as [requested](https://github.com/OmenMon/OmenMon/issues/3#issue-1984556312) by [@dd871](https://github.com/dd871)
+  * Disable keyboard backlight & color interface entirely on unsupported models with per-key RGB [keyboard type](https://omenmon.github.io/cli#kbdtype) as [requested](https://github.com/OmenMon/OmenMon/issues/3#issue-1984556312) by **[@dd871](https://github.com/dd871)**
   * Make the [GPU mode switching](https://omenmon.github.io/gui#gpu-mode) switch to `0x00` `Hybrid` mode instead of `0x02` `Optimus` if [system design data](https://omenmon.github.io/cli#system) byte #7 flag `0x08` is not set (but `0x04` is, since otherwise the menu item would not have been enabled): based on [further report](https://github.com/OmenMon/OmenMon/issues/1#issuecomment-1805499020) by **[@ArmynC](https://github.com/ArmynC)**
 
 ### 0.55.1 (2023-11-09)
