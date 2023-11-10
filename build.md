@@ -78,7 +78,7 @@ Earlier _C#_ versions would not work without some code having to be rewritten. T
 
 ### 0.56 (2023-11-10)
 
-  * Fan speed values reported by the Embedded Controller will be discarded as not credible if they exceed [FanLevelMax](https://omenmon.github.io/config#fanlevelmax) by over 10%.
+  * Fan speed values reported by the Embedded Controller will be discarded if they exceed [FanLevelMax](https://omenmon.github.io/config#fanlevelmax) by over 10%.
   * Incorporate changes from pre-release versions 0.55.1 and 0.55.2 into the release
 
 ### 0.55.2 (2023-11-10)
