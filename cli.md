@@ -387,11 +387,11 @@ public enum GpuMode : byte {
 }
 ````
 
-On the author's system, this seems to toggle between `Discrete` and `Optimus`. The value for `Hybrid` is never used.
+This is <u>not</u> _Advanced Optimus_ but the equivalent of the setting available in the _UEFI (BIOS) Setup_. A reboot is required for it to take effect. However, being able to toggle the setting programmatically still saves the hassle of having to open the _Setup_ menu every time.
 
 On models that do not support GPU mode switching, the call to retrieve GPU mode will silently fail and return `Hybrid`. For GPU mode switching capability check, see byte #7 of the [System](#system) data. Manual GPU mode setting is still allowed on systems that do not support it but is likely to return an error.
 
-This is <u>not</u> _Advanced Optimus_ but the equivalent of the setting available in the _UEFI (BIOS) Setup_. A reboot is required for it to take effect. However, being able to toggle the setting programmatically still saves the hassle of having to open the _Setup_ menu every time.
+On the author's `8A14` model, where the `Supported8` flag is set, this seems to toggle between `Discrete` and `Optimus`. The value for `Hybrid` is never used. On slightly older systems such as the `88F7`, where the `Supported4` flag is sset, it is the `Optimus` mode that is not used, and trying to switch it on causes an error.
 
 For the record, _Advanced Optimus_ settings can only be changed from within _nVidia Control Panel_ (or via one of the _nVidia Display Container_ notification-area icons, if you enabled it).
 
