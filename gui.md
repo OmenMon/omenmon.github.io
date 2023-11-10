@@ -153,7 +153,7 @@ These two mutually-exclusive settings control the choice of the GPU. Note that t
 
 This is equivalent to changing the pertinent setting in the _UEFI Setup_ but saves you the trip. A reboot is required, and you will be prompted whether you want to proceed with it at once.
 
-<u>Note</u>: This part of the menu is not enabled on models without GPU mode switching support as reported by the [BIOS system data](/cli#system). You can still attempt to switch the mode manually [from the command line](/cli#gpumode), although it is likely to result in an error. If [system data]/cli#system) byte #7 flag `0x08` is set, the switch will be to `0x02` `Optimus` mode; otherwise (thus effectively if the the `0x04` is set, since the menu item would not have been enabled otherwise), the switch will be to `0x00` `Hybrid` mode. This is to allow both kinds of devices reusing the same menu item.
+<u>Note</u>: This part of the menu is not enabled on models without GPU mode switching support as reported by the [BIOS system data](/cli#system). You can still attempt to switch the mode manually [from the command line](/cli#gpumode), although it is likely to result in an error. If [system data](/cli#system) byte #7 flag `0x08` is set, the switch will be to `0x02` `Optimus` mode; otherwise (thus effectively if the the `0x04` is set, since the menu item would not have been enabled otherwise), the switch will be to `0x00` `Hybrid` mode. This is to allow both kinds of devices reusing the same menu item.
 
 ### Keyboard {#menu-keyboard}
 
