@@ -76,6 +76,11 @@ Earlier _C#_ versions would not work without some code having to be rewritten. T
 
 ## Version History {#history}
 
+### 0.56 (2023-11-10)
+
+  * Fan speed values reported by the Embedded Controller will be discarded as not credible if they exceed [FanLevelMax](https://omenmon.github.io/config#fanlevelmax) by over 10%.
+  * Incorporate changes from pre-release versions 0.55.1 and 0.55.2 into the release
+
 ### 0.55.2 (2023-11-10)
 
   * Disable keyboard backlight & color interface entirely on unsupported models with per-key RGB [keyboard type](https://omenmon.github.io/cli#kbdtype) as [requested](https://github.com/OmenMon/OmenMon/issues/3#issue-1984556312) by **[@dd871](https://github.com/dd871)**
