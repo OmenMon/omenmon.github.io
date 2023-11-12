@@ -163,7 +163,7 @@ The `Default` preset name look-up does not happen in the command-line mode but t
 
 #### EcFailLimit
 
-A [numerical value](#numerical) that defaults to **20**.
+A [numerical value](#numerical) that defaults to **15**.
 
 Maximum number of failed attempts waiting to read from an Embedded Controller.
 
@@ -183,13 +183,13 @@ Only one application can be accessing the Embedded Controller at any given time,
 
 #### EcRetryLimit
 
-A [numerical value](#numerical) that defaults to **5**.
+A [numerical value](#numerical) that defaults to **3**.
 
 Maximum number of attempts an Embedded Controller read or write operation will be retried.
 
 #### EcWaitLimit
 
-A [numerical value](#numerical) that defaults to **50**.
+A [numerical value](#numerical) that defaults to **30**.
 
 Maximum number of attempts an Embedded Controller I/O port read operation will be retried.
 
@@ -477,7 +477,7 @@ If the main form is hidden (not visible even as a taskbar icon), this setting is
 
 #### UpdateProgramInterval
 
-A [numerical value](#numerical) that defaults to **30**. The unit is seconds [s].
+A [numerical value](#numerical) that defaults to **15**. The unit is seconds [s].
 
 How often the fan program is updated.
 
@@ -547,20 +547,20 @@ An extensively-annotated sample configuration file is distributed with the appli
         <!-- Embedded Controller -->
 
         <!-- Maximum number of failed attempts waiting to read -->
-        <EcFailLimit>20</EcFailLimit>
+        <EcFailLimit>15</EcFailLimit>
 
         <!-- Embedded Controller monitoring interval [ms]
              (applies to command-line mode -EcMon context) -->
-        <EcMonInterval>200</EcMonInterval>
+        <EcMonInterval>1000</EcMonInterval>
 
         <!-- How long before bailing out trying to get a mutex [ms] -->
         <EcMutexTimeout>200</EcMutexTimeout>
 
         <!-- Maximum number of read or write attempts -->
-        <EcRetryLimit>5</EcRetryLimit>
+        <EcRetryLimit>3</EcRetryLimit>
 
         <!-- Iterations before waiting fails each time -->
-        <EcWaitLimit>50</EcWaitLimit>
+        <EcWaitLimit>30</EcWaitLimit>
 
         <!-- Fan Control -->
 
@@ -695,13 +695,13 @@ An extensively-annotated sample configuration file is distributed with the appli
         <!-- Update Interval -->
 
         <!-- How often the dynamic notification icon is updated [s] -->
-        <UpdateIconInterval>1</UpdateIconInterval>
+        <UpdateIconInterval>3</UpdateIconInterval>
 
         <!-- How often the monitoring data on the main form is updated [s] -->
-        <UpdateMonitorInterval>1</UpdateMonitorInterval>
+        <UpdateMonitorInterval>3</UpdateMonitorInterval>
 
         <!-- How often the fan program is updated (if running) [s] -->
-        <UpdateProgramInterval>30</UpdateProgramInterval>
+        <UpdateProgramInterval>15</UpdateProgramInterval>
 
     </Config>
 
