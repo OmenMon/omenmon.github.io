@@ -79,6 +79,7 @@ Earlier _C#_ versions would not work without some code having to be rewritten. T
 ### 0.56.1 (2023-11-12)
 
   * Disable keyboard UI for incompatible devices that report no backlight, let the [HasBacklight](https://omenmon.github.io/cli#hasbacklight) and [KbdType](https://omenmon.github.io/cli#kbdtype) BIOS calls fail silently instead of reporting any errors, which makes it easier to use the rest of the application with a not fully-compatible device: thank you to _Reddit_ user **[____N-](https://www.reddit.com/user/____N-)** for providing information that made this improvement possible
+  * Update the sample fan programs in the bundled configuration file, link to an [editable fan curve visualization online](https://www.desmos.com/calculator/6vfpghtud0) 
 
 ### 0.56 (2023-11-10)
 
