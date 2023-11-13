@@ -76,6 +76,10 @@ Earlier _C#_ versions would not work without some code having to be rewritten. T
 
 ## Version History {#history}
 
+### 0.56.3 (2023-11-13)
+
+  * If the call to set fan levels using WMI BIOS fails, try to set the level individually for each fan using the Embedded Controller (this applies to GUI _Const_ fan-control mode and fan programs only)
+
 ### 0.56.2 (2023-11-12)
 
   * Explicitly specify Embedded Controller mutex security in an attempt to better co-operate with other applications in sharing the access to the Embedded Controller
