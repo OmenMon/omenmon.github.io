@@ -399,17 +399,25 @@ For the record, _Advanced Optimus_ settings can only be changed from within _nVi
 
 * `-Bios HasBacklight` Check if keyboard backlight is supported
 
+If unsupported, the call will silently fail and return a zero status.
+
 ### HasMemoryOverclock
 
 * `-Bios HasMemoryOverclock` Check if memory overclocking is supported
+
+If unsupported, the call will silently fail and return a zero status.
 
 ### HasOverclock
 
 * `-Bios HasOverclock` Check if overclocking is supported
 
+If unsupported, the call will silently fail and return a zero status.
+
 ### HasUndervolt
 
 * `-Bios HasUndervolt` Check if undervolting is supported
+
+If unsupported, the call will silently fail and return a zero status.
 
 ### Idle
 

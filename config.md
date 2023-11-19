@@ -99,11 +99,12 @@ Note that special characters [have to be escaped](https://stackoverflow.com/a/46
 
 A [Boolean value](#boolean) that defaults to **false**.
 
-If set to **true**, when the application is started in GUI mode, automatically:
+If set to **true**, once the application is started in GUI mode, automatically:
 
 * Enable or disable automatic start-up when a user logs on, depending on the value of the [AutoStartup](#autostartup) setting
 * Set the [GPU power level](/cli#gpu) to the value of [GpuPowerDefault](#gpupowerdefault)
 * Start the [fan program](#fan-programs) named in [FanProgramDefault](#fanprogramdefault)
+* Switch the [fan program](#fan-programs) to the one named in [FanProgramDefaultAlt](#fanprogramdefaultalt) whenever the system loses AC power, and switch it back when AC power is restored
 
 This setting can be changed from the GUI context menu: [Settings](/gui#menu-settings) → [Apply Settings on Startup](/gui#apply-settings-on-startup)
 
@@ -197,6 +198,14 @@ Each Embedded Controller read or write operation includes a couple of I/O port r
 
 ### Fan Control {#fan}
 
+#### FanCountdownExtendAlways
+
+A [Boolean value](#boolean) that defaults to **false**.
+
+If set to **true**, any non-zero fan countdown will always be continually extended, for as long as the application is running, even with no fan program active, no constant-speed button selected, and the main window hidden, which means any custom fan settings can be made persistent without the need for a fan program.
+
+Please note that this means unsuitable fan settings will never expire, even if you close the main window and forget you are running **OmenMon**. If you enable this, the onus is on you to make sure that the fan settings are appropriate for the situation.
+
 #### FanCountdownExtendInterval
 
 A [numerical value](#numerical) that defaults to **120**. The unit is seconds [s].
@@ -233,6 +242,22 @@ Minimum fan level threshold. This setting is used in constant-speed mode for fan
 
 When setting constant fan speed, the minimum value will be interpreted as a **0**, i.e. switching the fan off.
 
+#### FanLevelNeedManual
+
+A [Boolean value](#boolean) that defaults to **false**.
+
+If **true**, before setting the fan levels, an attempt will be made to set the _manual_ fan mode first by writing the value of `0x06` to the `OMCC` register. This also applies when running a [fan program](#fan-programs), with `0x00` being written to the `OMCC` register when a fan program is terminated.
+
+Whether this call is necessary is model-specific. With the aim of reducing Embedded Controller workload, this setting is disabled by default. If you find that fan-level setting does not appear to work on your model, try changing this to **true**.
+
+#### FanLevelUseEc
+
+A [Boolean value](#boolean) that defaults to **false**.
+
+By default, **OmenMon** will make a BIOS call to set the fan levels. If this does not work, you can alternatively set this value to **true**, so that the fan levels will be set instead by writing to the Embedded Controller registers directly.
+
+Note that fan-level setting with a BIOS call from the GUI will silently ignore any BIOS errors: this is because it has been reported that on some models, although the BIOS returns an error, the fan-level settings are still applied correctly. You can check if the call returns an error on your specific model by using the [FanLevel](/cli#fanlevel) BIOS setting from the [command line](/cli).
+
 #### FanProgramDefault
 
 A [string value](#string) with no set default.
@@ -242,6 +267,16 @@ When [AutoConfig](#autoconfig) is enabled, this indicates the name of the [fan p
 When [KeyToggleFanProgram](#keytogglefanprogram) is enabled and [KeyCustomAction](#key) is disabled, this indicates the name of the [fan program](#fan-programs) that will be toggled by pressing the _Omen_ key when the application window is already shown.
 
 The value must exactly match the program name for the setting to take effect.
+
+Just like [FanProgramDefaultAlt](#fanprogramdefaultalt), this setting is not applicable to running a fan program in the [CLI mode](/cli#prog).
+
+#### FanProgramDefaultAlt
+
+A [string value](#string) with no set default.
+
+When [AutoConfig](#autoconfig) is enabled, a [fan program](#fan-programs) is running (whether the [FanProgramDefault](#fanprogramdefault) activated by [AutoConfig](#autoconfig) or otherwise), and the system loses AC power (i.e. switches to battery power, this program will be launched instead of the default one. The system will revert to the default fan program once the AC power is restored.
+
+Just like [FanProgramDefault](#fanprogramdefault), this setting is not applicable to running a fan program in the [CLI mode](/cli#prog).
 
 ### Fan Programs
 
@@ -282,7 +317,7 @@ Where:
 * `<Level Temperature="value">`, with `value` being a [number](#numerical), is a container for fan settings at a given temperature level. When the fan program is running, on every update (i.e. at a given interval), it applies the fan settings for the <u>highest</u> level <u>lower</u> than the <u>maximum</u> current temperature at that moment
 * Within the `<Level>` container, `<Cpu>` and `<Gpu>` correspond to the [fan level](/cli#fanlevel) settings for each fan respectively
 
-Note that [FanProgramDefault](#fanprogramdefault) identifies the default fan program that can optionally be toggled on or off with the _Omen_ key.
+Note that [FanProgramDefault](#fanprogramdefault) identifies the fan program that is started when opening the application and can optionally be toggled on or off with the _Omen_ key, while [FanProgramDefaultAlt](#fanprogramdefaultalt) defines an alternative fan program in a situation when the system loses AC power.
 
 The fan curve of the _Power_ program used in the default configuration file is as follows:
 
@@ -564,6 +599,11 @@ An extensively-annotated sample configuration file is distributed with the appli
 
         <!-- Fan Control -->
 
+        <!-- Fan countdown will always be continually extended, even
+             with no fan program running, no constant-speed button
+             selected, and the main window hidden, until exit -->
+        <FanCountdownExtendAlways>false</FanCountdownExtendAlways>
+
         <!-- Fan countdown timer will be extended by this value [s] -->
         <FanCountdownExtendInterval>120</FanCountdownExtendInterval>
 
@@ -583,9 +623,21 @@ An extensively-annotated sample configuration file is distributed with the appli
         <FanLevelMax>55</FanLevelMax>
         <FanLevelMin>20</FanLevelMin>
 
+        <!-- Before setting fan levels, set manual
+             fan mode first using the Embedded Controller -->
+        <FanLevelNeedManual>false</FanLevelNeedManual>
+
+        <!-- Use the Embedded Controller instead
+             of a BIOS call for fan-level setting -->
+        <FanLevelUseEc>false</FanLevelUseEc>
+
         <!-- Default fan program, which might be loaded on startup
              (depending on the Autoconfig setting) -->
         <FanProgramDefault>Power</FanProgramDefault>
+
+        <!-- Default alternate fan program to switch to
+             if no longer on AC power (i.e. on battery) -->
+        <FanProgramDefaultAlt>Silent</FanProgramDefaultAlt>
 
         <!-- Fan program definitions
              Curve visualization: https://www.desmos.com/calculator/6vfpghtud0

@@ -100,7 +100,7 @@ Sets the fan performance mode.
 
 Only _Thermal Platform Version 1_ modes _Default_, _Performance_ and _Cool_ will be displayed by default, unless a different mode is enabled, in which case it will be shown as well. The remaining choices are _Thermal Platform Version 0_ legacy modes. You can still see and enable these from the [main window](#fan-control).
 
-If a mode is selected here, the application will not take any steps to make sure it persists, which means it will generally revert back to _Default_ in 120 seconds [s] unless [Const fan control](#fan-control) setting is selected in the [main window](#main).
+If a mode is selected here, the application will not take any steps to make sure it persists, which means it will generally revert back to _Default_ in 120 seconds [s] unless [Const fan control](#fan-control) setting is selected in the [main window](#main) or the [FanCountdownExtendAlways](https://omenmon.github.io/config#fancountdownextendalways) configuration setting is set to **true**.
 
 Even if this setting is not available, for example when a [fan program](#menu-fan-program) is active, the current fan mode is shown with a check mark.
 
@@ -258,7 +258,7 @@ There is no corresponding configuration option for this setting. It is **disable
 
 This setting controls whether the application responds to the _Omen_ key. It is equivalent to enabling the `Key` [task](/cli#task), that is running `-Task Key=On` from the command line.
 
-The application's response to the _Omen_ key can be further controlled with the [KeyCustomAction](/config#key) and [KeyToggleFanProgram](/config#keytogglefanprogram) configuration settings. Briefly, subsequent key presses can either toggle the main window or fan program or the key can be used to launch another application with arbitrary arguments.
+The application's response to the _Omen_ key can be further controlled with the [KeyCustomAction](/config#key) and [KeyToggleFanProgram](/config#keytogglefanprogram) configuration settings. Briefly, subsequent key presses can either toggle the main window, first bring up the main window and then toggle the fan program, or the key can be used to launch another application with arbitrary arguments.
 
 Note that to fully take advantage of this setting, the configuration file has to be edited manually.
 
@@ -392,6 +392,7 @@ The settings are applied only when the `✓` button is pressed. It can still be 
 * If you want a mode other than _Default_ to persist, select **Const** afterwards
   * Otherwise, the mode will revert to _Default_ when the timer runs out
   * Do not press the `✓` button after selecting **Const** as this would switch to the **Const** mode
+  * Alternatively, you can set [FanCountdownExtendAlways](https://omenmon.github.io/config#fancountdownextendalways) to **true**
 
 #### Constant-Speed Fan Mode {#fan-const}
 
@@ -433,7 +434,7 @@ This portion of the window consists of a text field with **three rows**. These b
 The next couple of values might come handy for performance evaluation. In particular, AC adapter issues, if present, may be preventing the hardware from operating at full speed:
 
 * **215W** -- [Default Power Limit 4](/cli#system)
-* **AC Power OK** -- [Smart AC Adapter Status](/cli#adapter)
+* **AC Power OK** -- [Smart AC Adapter Status](/cli#adapter) or **No AC Power** -- if on battery
 
 The following row focuses on the GPU:
 
@@ -449,7 +450,7 @@ The bottom row is primarily used for [fan-program](#fan-program) status reportin
 * **T<sub>max</sub> 70°C** is the highest temperature reading across all the sensors
 * **Lvl 70** is the selected program temperature level -- the highest entry lower or equal than the temperature reading [°C]
 * **Fans 40, 42** are the fan levels corresponding to the temperature level -- the fans have been set to these speeds [krpm]
-* **Power** is the name of the currently-running fan program
+* **Power** is the name of the currently-running fan program, prefixed with **[Alt]** if enabled automatically as an alternative due to AC power loss
 * **@ 11:52:35** is the timestamp when the fan program was last updated
 
 Even if the main window is hidden, the same information can be obtained from the notification icon [tool tip](#tip).
