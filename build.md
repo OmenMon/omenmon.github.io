@@ -76,6 +76,11 @@ Earlier _C#_ versions would not work without some code having to be rewritten. T
 
 ## Version History {#history}
 
+### 0.58.0 (Pending)
+
+  * Fix incorrect temperature level in the configuration file: thank you to **[@Rupurudu](https://github.com/Rupurudu)** for spotting it and submmiting a [pull request](https://github.com/OmenMon/OmenMon/pull/11)
+  * Do not show the [default CPU Power Limit 4](https://omenmon.github.io/cli#system) value on unsupported models where it equals `0`: thank you to **[@TembuRaptor007](https://github.com/TembuRaptor007)** and **[@Rupurudu](https://github.com/Rupurudu)** for bringing my attention to this
+
 ### 0.57.0 (2023-11-19)
 
 _**Organizational note:** from now on, all new builds will be marked as **releases**, since pre-releases (previews) are difficult to discover from the main repository page, leading to people not being aware of the latest builds. This build also brings all the changes from 0.56.1, 0.56.2, and 0.56.3 for those that never saw them._
