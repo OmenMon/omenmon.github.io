@@ -278,6 +278,14 @@ When [AutoConfig](#autoconfig) is enabled, a [fan program](#fan-programs) is run
 
 Just like [FanProgramDefault](#fanprogramdefault), this setting is not applicable to running a fan program in the [CLI mode](/cli#prog).
 
+#### FanProgramModeCheckFirst
+
+A [Boolean value](#boolean) that defaults to **true**.
+
+When **true**, during a fan program, **OmenMon** will first check (using the Embedded Controller) if the desired fan mode is not set already before setting it (using a BIOS WMI call).
+
+If set to **false**, the check will be skipped, which results in one fewer Embedded Controller operation every [UpdateProgramInterval](#updateprograminterval), at the cost of one more WMI BIOS call: this setting can be used to reduce Embedded Controller load in scenarios where it is an issue.
+
 ### Fan Programs
 
 Fan program definitions follow the convention:
@@ -638,6 +646,12 @@ An extensively-annotated sample configuration file is distributed with the appli
         <!-- Default alternate fan program to switch to
              if no longer on AC power (i.e. on battery) -->
         <FanProgramDefaultAlt>Silent</FanProgramDefaultAlt>
+
+        <!-- Check first (using the EC) if the fan mode is not set already
+             before setting it (using a BIOS WMI call) during a fan program
+             (if false, makes one EC operation less every UpdateProgramInterval,
+             at the cost of one more WMI BIOS call: can be used to reduce EC load) -->
+        <FanProgramModeCheckFirst>true</FanProgramModeCheckFirst>
 
         <!-- Fan program definitions
              Curve visualization: https://www.desmos.com/calculator/6vfpghtud0
