@@ -11,7 +11,7 @@ title: Configuration
   * [Color Presets](#color) / [Embedded Controller](#ec)
   * [Fan Control](#fan) / [Fan Programs](#fan-programs)
   * [GPU](#gpu) / [Graphical User Interface](#gui) / [Key Custom Action](#key)
-  * [Preset Settings](#preset) / [Update Intervals](#update)
+  * [Preset Settings](#preset) / [Temperature Sensors](#sensors) / [Update Intervals](#update)
   * [Localizable Messages](#messages)
 * [Sample Configuration](#example)
 
@@ -32,7 +32,7 @@ Configuration is stored in the file `OmenMon.xml` in the same directory as `Omen
   * Only certain settings can be changed from the GUI
   * The remaining settings can only be modified by editing the configuration file (while the application is not running)
 * The original file will be reused if present and not malformed, otherwise a new file will be generated
-  * Comments in the original file are preserved, except if within the [ColorPresets](#color-presets) or [FanPrograms](#fan-programs) elements.
+  * Comments in the original file are preserved, except if within the [ColorPresets](#color-presets), [FanPrograms](#fan-programs) or [Temperature](#sensors) elements.
 * The application saves all the settings it can read from the configuration file
   * Settings not listed in the original configuration file will be added with their default values
 * If the settings could not be saved, an error will be shown
@@ -500,6 +500,41 @@ A [numerical value](#numerical) that defaults to **60**. The unit is times per s
 
 Preset value to be used for [Graphics](/gui#menu-graphics) → [Standard Refresh Rate](/gui#refresh-rate).
 
+### Temperature Sensors {#sensors}
+
+Temperature sensor entries follow the convention:
+
+````xml
+<?xml version="1.0" encoding="utf-8"?> 
+<OmenMon>
+    <Config>
+        <Temperature>
+            <Sensor Name="CPUT" Source="EC" />
+            <Sensor Name="BIOS" Source="BIOS" />
+        </Temperature>
+    </Config>
+</OmenMon>
+````
+
+Where:
+* `<Temperature>` is the root element all sensor definitions are contained within
+* `<Sensor Name="name" Source="..." />` is a container for each temperature sensor entry
+* The value of the `Source=` attribute is a [string](#string) that identifies how the sensor reading is to be obtained
+* The value of the `Name=` attribute is a [string](#string) used to uniquely identify the sensor within the data source and also as the basis for display in the [main window](/gui#temperature), optionally with the use of localizable messages
+* The value of the `Use=` attribute is a [Boolean](#boolean) flag to determine whether the sensor is to be taken into consideration when evaluating maximum temperature, the default is **true**; otherwise, its readings will be shown in the main window but otherwise not taken into account
+
+There are currently two sources available:
+* `EC` provides Embedded Controller data, with the `Name=` attribute identifying the [Embedded Controller register](/cli#ec-registers) to read from
+* `BIOS` provides the temperature reading obtainable by making a WMI BIOS call: the `Name=` attribute is currently disregarded although it preferably should be set to `BIOS` to maintain future compatibility
+
+Even though the settings are described as simply string values here, the entries will be validated as they are read from the configuration file. Incorrect definitions will be silently discarded.
+
+No more than nine sensors can be defined. Surplus entries will be silently discarded as well.
+
+If no custom sensors were correctly defined, which could include the situation when all sensors were defined with `Use="false"`, nine hard-coded default sensors will be used instead. These are the same ones as in the [example configuration file](#example).
+
+Sensor names and their descriptions appearing in the [main window](/gui#temperature) as tooltips can be defined as [localizable strings](#messages) with the identifiers `GuiMainTmpXXXX` and `GuiTipTmpXXXX` respectively. If a localized message for the name is absent, the `Name=` attribute will be used directly. In case of a missing tooltip, the text for `GuiTipTmpUnknown` will be used as a fallback.
+
 ### Update Intervals {#update}
 
 #### UpdateIconInterval
@@ -757,6 +792,22 @@ An extensively-annotated sample configuration file is distributed with the appli
 
         <!-- Standard display refresh rate preset value [Hz] -->
         <PresetRefreshRateLow>60</PresetRefreshRateLow>
+
+        <!-- Temperature Sensors -->
+
+        <!-- Note: nine default sensors are hard-coded in the application
+             and will be used instead if none are defined here -->
+        <Temperature>
+            <Sensor Name="CPUT" Source="EC" />
+            <Sensor Name="GPTM" Source="EC" />
+            <Sensor Name="BIOS" Source="BIOS" />
+            <Sensor Name="RTMP" Source="EC" />
+            <Sensor Name="TMP1" Source="EC" />
+            <Sensor Name="TNT2" Source="EC" />
+            <Sensor Name="TNT3" Source="EC" />
+            <Sensor Name="TNT4" Source="EC" />
+            <Sensor Name="TNT5" Source="EC" />
+        </Temperature>
 
         <!-- Update Interval -->
 

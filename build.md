@@ -76,13 +76,14 @@ Earlier _C#_ versions would not work without some code having to be rewritten. T
 
 ## Version History {#history}
 
-### 0.58.0 (Pending)
+### 0.58.0 (2023-11-24)
 
   * Fix incorrect temperature level in the configuration file: thank you to **[@Rupurudu](https://github.com/Rupurudu)** for spotting it and submmiting a [pull request](https://github.com/OmenMon/OmenMon/pull/11)
   * Do not show the [default CPU Power Limit 4](https://omenmon.github.io/cli#system) value on unsupported models where it equals `0`: thank you to **[@TembuRaptor007](https://github.com/TembuRaptor007)** and **[@Rupurudu](https://github.com/Rupurudu)** for bringing my attention to this
   * In command-line [Embedded Controller monitor](https://omenmon.github.io/cli#ecmon) mode, hexadecimal digits were _A_ to _F_ (upper-case) in column headers, and _a_ to _f_ (lower-case) in row headers: change the former style to the latter so that they are consistent
   * Use "born-on" date consistently throughout the application: change the [command-line](https://omenmon.github.io/cli) `-Bios MfgDate` argument to [BornDate](https://omenmon.github.io/cli#borndate)
-  * Add [FanProgramModeCheckFirst](https://omenmon.github.io/config#fanprogrammodecheckfirst) configuration setting to optionally skip checking if the current fan mode is the desired one, which is an Embedded Controller operation, and instead just make a BIOS call to set it regardless: this setting defaults to **true** but can be changed to **false** to reduce Embedded Controller load in scenarios when it is an issue
+  * Add [FanProgramModeCheckFirst](https://omenmon.github.io/config#fanprogrammodecheckfirst) configuration setting to optionally skip checking if the current fan mode is the desired one, which requires an Embedded Controller operation, and instead just make a BIOS call to set it regardless: this setting defaults to **true** but can be changed to **false** to reduce Embedded Controller load in scenarios when it is an issue
+  * Add [Temperature](https://omenmon.github.io/config#temperature) section to the configuration file, with the ability to **customize temperature sensors**: see the documentation for details
 
 ### 0.57.0 (2023-11-19)
 
