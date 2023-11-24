@@ -9,7 +9,7 @@ title: Command Line
 * [BIOS Operations](#bios)
   * [Cpu:PL1](#cpupl1) / [Cpu:PL4](#cpupl4) / [Cpu:PLGpu](#cpuplgpu) / [Gpu](#gpu) / [GpuMode](#gpumode) / [Xmp](#xmp)
   * [FanCount](#fancount) / [FanLevel](#fanlevel) / [FanMax](#fanmax) / [FanMode](#fanmode) / [FanTable](#fantable) / [FanType](#fantype)
-  * [Idle](#idle) / [Temp](#temp) / [Throttling](#throttling) / [MfgDate](#mfgdate) / [System](#system) / [Adapter](#adapter)
+  * [Idle](#idle) / [Temp](#temp) / [Throttling](#throttling) / [BornDate](#borndate) / [System](#system) / [Adapter](#adapter)
   * [HasOverclock](#hasoverclock) / [HasMemoryOverclock](#hasmemoryoverclock)  / [HasUndervolt](#hasundervolt)
   * [KbdType](#kbdtype) / [HasBacklight](#hasbacklight) / [Backlight](#backlight) / [Color](#color) / [Anim](#anim)
 * [Embedded Controller Operations](#ec)
@@ -82,7 +82,7 @@ The available operations in the `-Bios` context are:
 ````rust
 Cpu:PL1=<Byte> Cpu:PL4=<Byte> Cpu:PLGpu=<Byte> Gpu[=<GpuPreset>] GpuMode[=<GpuMode>] Xmp[=<Flag>]
 FanCount FanLevel[=<FanLevel>] FanMax[=<Flag>] FanMode=<FanMode> FanTable[=<FanTable>] FanType
-Idle[=<Flag>] Temp Throttling MfgDate System Adapter HasOverclock HasMemoryOverclock HasUndervolt
+Idle[=<Flag>] Temp Throttling BornDate System Adapter HasOverclock HasMemoryOverclock HasUndervolt
 KbdType HasBacklight Backlight[=<Flag>] Color[=<Color>] Anim[=<ByteArray>]
 ````
 
@@ -128,6 +128,10 @@ public enum Backlight : byte {
     On  = 0xE4   // 0b11100100 - Keyboard backlight on
 }
 ````
+
+### BornDate
+
+* `-Bios BornDate` Retrieve the _"Born-on Date"_ (BOD)
 
 ### Color
 
@@ -452,10 +456,6 @@ The layout of the _TenKeyLess_ keyboard is as follows:
 ![Tenkeyless keyboard layout diagram](/pic/diagram-kbd.png)
 
 The functionality of this application has only been tested with this specific keyboard layout.
-
-### MfgDate
-
-* `-Bios MfgDate` Retrieve the manufacturing date, aka the _"Born-on Date"_ (BOD)
 
 ### System
 

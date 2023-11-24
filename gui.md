@@ -428,8 +428,8 @@ This portion of the window consists of a text field with **three rows**. These b
 
 * **HP** -- Manufacturer
 * **8A14** -- Product Identifier
-* **32.25** -- Product Version
-* **Mfg 20220101** -- [Born-on Date](/cli#mfgdate)
+* **32.25** -- Product Version (Embedded Controller Firmware Version)
+* **\* 20220101** -- [Born-on Date](/cli#borndate)
 
 The next couple of values might come handy for performance evaluation. In particular, AC adapter issues, if present, may be preventing the hardware from operating at full speed:
 
