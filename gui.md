@@ -345,6 +345,7 @@ This portion of the main window shows temperature sensor readings.
 * A superscript **<sup>+</sup>** or **<sup>-</sup>** next to a sensor indicates an ascending or descending trend
 * The temperature is shown in degrees Celsius [°C]
 * Readings are updated every [UpdateMonitorInterval](/config#updatemonitorinterval) seconds [s]
+* Sensors can be [customized](/config#sensors) and set to only be shown but not used for determining the maximum temperature: in such case, the name is ~~struck-through~~
 
 ### Fan Monitoring {#fan}
 
