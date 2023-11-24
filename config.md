@@ -510,7 +510,7 @@ Temperature sensor entries follow the convention:
     <Config>
         <Temperature>
             <Sensor Name="CPUT" Source="EC" />
-            <Sensor Name="BIOS" Source="BIOS" />
+            <Sensor Name="BIOS" Source="BIOS" Use="false" />
         </Temperature>
     </Config>
 </OmenMon>
@@ -518,20 +518,21 @@ Temperature sensor entries follow the convention:
 
 Where:
 * `<Temperature>` is the root element all sensor definitions are contained within
-* `<Sensor Name="name" Source="..." />` is a container for each temperature sensor entry
-* The value of the `Source=` attribute is a [string](#string) that identifies how the sensor reading is to be obtained
-* The value of the `Name=` attribute is a [string](#string) used to uniquely identify the sensor within the data source and also as the basis for display in the [main window](/gui#temperature), optionally with the use of localizable messages
-* The value of the `Use=` attribute is a [Boolean](#boolean) flag to determine whether the sensor is to be taken into consideration when evaluating maximum temperature, the default is **true**; otherwise, its readings will be shown in the main window but otherwise not taken into account
+* `<Sensor Name="..." Source="..." />` is a container for each temperature sensor entry
+
+The value of the `Source=` attribute is a [string](#string) that identifies how the sensor reading is to be obtained. The value of the `Name=` attribute is a [string](#string) used to uniquely identify the sensor within the data source and also as the basis for display in the [main window](/gui#temperature), optionally with the use of localizable messages. Both `Name=` and `Source=` attributes are mandatory.
+
+The value of the optional `Use=` attribute is a [Boolean](#boolean) flag to determine whether the sensor is to be taken into consideration when evaluating maximum temperature: the default is **true**. Otherwise, its readings will be shown in the main window but otherwise not taken into account either for [fan program](#fan-programs) purposes or for displaying the maximum temperature as a [dynamic icon](https://omenmon.github.io/gui#icon).
 
 There are currently two sources available:
-* `EC` provides Embedded Controller data, with the `Name=` attribute identifying the [Embedded Controller register](/cli#ec-registers) to read from
+* `EC` provides Embedded Controller data, with the `Name=` attribute identifying the [register](/cli#ec-registers) to read from
 * `BIOS` provides the temperature reading obtainable by making a WMI BIOS call: the `Name=` attribute is currently disregarded although it preferably should be set to `BIOS` to maintain future compatibility
 
 Even though the settings are described as simply string values here, the entries will be validated as they are read from the configuration file. Incorrect definitions will be silently discarded.
 
 No more than nine sensors can be defined. Surplus entries will be silently discarded as well.
 
-If no custom sensors were correctly defined, which could include the situation when all sensors were defined with `Use="false"`, nine hard-coded default sensors will be used instead. These are the same ones as in the [example configuration file](#example).
+If no custom sensors were correctly defined, which could as well include the situation when the `Use="false"` attribute was added to all the defined sensors, nine hard-coded default sensors will be used instead. These are the same ones as in the [example configuration file](#example).
 
 Sensor names and their descriptions appearing in the [main window](/gui#temperature) as tooltips can be defined as [localizable strings](#messages) with the identifiers `GuiMainTmpXXXX` and `GuiTipTmpXXXX` respectively. If a localized message for the name is absent, the `Name=` attribute will be used directly. In case of a missing tooltip, the text for `GuiTipTmpUnknown` will be used as a fallback.
 
@@ -800,7 +801,7 @@ An extensively-annotated sample configuration file is distributed with the appli
         <Temperature>
             <Sensor Name="CPUT" Source="EC" />
             <Sensor Name="GPTM" Source="EC" />
-            <Sensor Name="BIOS" Source="BIOS" />
+            <Sensor Name="BIOS" Source="BIOS" Use="false" />
             <Sensor Name="RTMP" Source="EC" />
             <Sensor Name="TMP1" Source="EC" />
             <Sensor Name="TNT2" Source="EC" />
