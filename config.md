@@ -224,6 +224,8 @@ If the constant-speed fan mode button is selected in the GUI (even if not necess
              
 In fan program mode, the equivalent is [UpdateProgramInterval](#updateprograminterval) + [FanCountdownExtendThreshold](#fancountdownextendthreshold). As an example, if a fan program is set to update every 30 seconds, and the threshold value is the default 5 seconds, once the countdown value falls down to 34 seconds, the countdown timer will be reset to the value of [FanCountdownExtendInterval](#fancountdownextendinterval) on the next fan program update.
 
+However, when running a fan program, the countdown will not be manually checked and extended if [FanProgramModeCheckFirst](#fanprogrammodecheckfirst) is set to **false** (the default), as setting the [fan mode](/cli#fanmode) already automatically resets the countdown.
+
 #### FanLevelMax
 
 A [numerical value](#numerical) that defaults to **55**. The unit is thousands of revolutions per minute [krpm].
@@ -280,11 +282,11 @@ Just like [FanProgramDefault](#fanprogramdefault), this setting is not applicabl
 
 #### FanProgramModeCheckFirst
 
-A [Boolean value](#boolean) that defaults to **true**.
+A [Boolean value](#boolean) that defaults to **false**.
 
 When **true**, during a fan program, **OmenMon** will first check (using the Embedded Controller) if the desired fan mode is not set already before setting it (using a BIOS WMI call).
 
-If set to **false**, the check will be skipped, which results in one fewer Embedded Controller operation every [UpdateProgramInterval](#updateprograminterval), at the cost of one more WMI BIOS call: this setting can be used to reduce Embedded Controller load in scenarios where it is an issue.
+If set to **false**, the check will be skipped, which results in one fewer Embedded Controller operation every [UpdateProgramInterval](#updateprograminterval), at the cost of one more WMI BIOS call. Further, in this scenario the countdown does not have to be checked extended, which additionally means two fewer Embedded Controller operations. Thus, this setting significantly reduces Embedded Controller load in scenarios where it is an issue.
 
 ### Fan Programs
 

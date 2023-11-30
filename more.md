@@ -22,11 +22,13 @@ This program is _free software_: you can redistribute it and/or modify it under 
 
 * The application requires administrative privileges to access the WMI BIOS routines and install a kernel-mode driver to interact with the Embedded Controller.
 
-* The only dependency is _Microsoft .NET Framework 4.8.1_. This is the version that should already be included with Windows. In other words, no external prerequisites need to be installed in a typical scenario.
+* The only dependency is _Microsoft .NET Framework 4.8_. This is the version that should already be [included with Windows](https://learn.microsoft.com/en-us/dotnet/framework/migration-guide/versions-and-dependencies). In other words, no external prerequisites need to be installed in a typical scenario.
 
 * Most features are specific to _HP_ devices with a compatible BIOS interface exposed by the `ACPI\PNP0C14` driver but command-line Embedded Controller operations and the _nVidia Advanced Optimus_ fix task should work on all compatible hardware
 
 * This application might not work well with other programs that access the Embedded Controller frequently. In particular, since it is intended as a replacement for the _Omen Hub_ (_Omen Control Center_), it is not expected to run concurrently with it. For interactions with other applications, Embedded Controller footprint may be reduced by hiding the monitor panel window, and switching to a static notification icon.
+
+* The GUI mode, if set to start automatically, will in fact only start upon an interactive user logon: this means **OmenMon** will not be running if no user is logged in. The only scenario where this would matter in practice is if using the laptop as a server: if somehow this is your use case, you may still use the [command-line mode](https://omenmon.github.io/cli) to set things up manually, or even [run a fan program](https://omenmon.github.io/cli#prog).
 
 * Due to the fact that the same executable is designed to run both as a CLI (console) and GUI application, which is not officially supported on _Windows_, there are some quirks with how the application operates in console mode: redirecting output to a file is not possible, and interacting with the application while it is running is also interacting with the underlying command prompt (however, the command-line mode is non-interactive, so it doesn't matter in practice).
 

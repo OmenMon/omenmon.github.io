@@ -11,9 +11,9 @@ title: Building
 
 ## Build Instructions {#instructions}
 
-**OmenMon** is written in _C# 11_ targeting _.NET Framework 4.8.1_. Earlier framework versions should work as well but the choice to go with the latest was made due to the possible DPI awareness handling (user interface scaling) improvements.
+**OmenMon** is written in _C# 11_ targeting _.NET Framework 4.8_. Earlier framework versions should work as well but the choice to go with (almost) the latest was made due to the possible DPI awareness handling (user interface scaling) improvements, while also retaining compatibility with any _Windows 10_ version.
 
-Reliance on the _.NET Framework_ instead of the newer _.NET Core_ means there should be no dependencies to be resolved by users at runtime, since _.NET Framework 4.8.1_ is essentially bundled with any recent _Windows_ release from version 10 onwards since September 2022 (this also includes LTSC 2021 with the latest updates).
+Reliance on the _.NET Framework_ instead of the newer _.NET Core_ means there should be no dependencies to be resolved by users at runtime, since _.NET Framework 4.8_ is essentially bundled with any recent _Windows_ release from version 10 onwards since September 2022 (this also includes LTSC 2021 with the latest updates).
 
 To build **OmenMon**, you need a _Windows_ system with _Microsoft Build Tools_ (or _Visual Studio_) version 17 (2022) installed. Compiling with the previous version 16 (2019) would require code changes due to the _C# 11_ not being supported.
 
@@ -75,6 +75,11 @@ Earlier _C#_ versions would not work without some code having to be rewritten. T
   * This is provided just in case for future extensibility, as there are currently no such dependencies
 
 ## Version History {#history}
+
+### 0.59.0 (2023-11-30)
+
+  * Downgrade to an earlier _.NET Framework_ version: 4.8 instead of 4.8.1 so that the application can run [on any Windows 10 version](https://learn.microsoft.com/en-us/dotnet/framework/migration-guide/versions-and-dependencies) as [requested](https://old.reddit.com/r/HPOmen/comments/17oet58/omenmon_fan_gpu_keyboard_performance_monitoring/kb33rdq/) by _Reddit_ user **[TUGRN](https://www.reddit.com/user/TUGRN)**
+  * When a fan program is running, skip checking and extending the countdown if [FanProgramModeCheckFirst](https://omenmon.github.io/config#fanprogrammodecheckfirst) is **false**, since setting the [fan mode](https://omenmon.github.io/cli#fanmode) automatically resets the countdown already; also update the default value for this setting to **false**: this saves two Embedded Controller operations every [UpdateProgramInterval](https://omenmon.github.io/config#updateprograminterval) (by default 15 seconds). It is now possible for **OmenMon** GUI to run in the background with no Embedded Controller operations whatsoever as long as there is no [dynamic icon](https://omenmon.github.io/config#guidynamicicon) and `BIOS` is the only [temperature sensor](https://omenmon.github.io/config#sensors)
 
 ### 0.58.0 (2023-11-24)
 
