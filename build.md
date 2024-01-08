@@ -76,6 +76,10 @@ Earlier _C#_ versions would not work without some code having to be rewritten. T
 
 ## Version History {#history}
 
+### 0.60.0 (2024-01-08)
+
+  * Addresses the issue where a single-color backlit keyboard is incorrectly detected as supporting backlight color customization, causing an exception when attempting to open the main window: thank you to **[@rotgruengelb](https://github.com/rotgruengelb)** for reporting this issue
+
 ### 0.59.0 (2023-11-30)
 
   * Downgrade to an earlier _.NET Framework_ version: 4.8 instead of 4.8.1 so that the application can run [on any Windows 10 version](https://learn.microsoft.com/en-us/dotnet/framework/migration-guide/versions-and-dependencies) as [requested](https://old.reddit.com/r/HPOmen/comments/17oet58/omenmon_fan_gpu_keyboard_performance_monitoring/kb33rdq/) by _Reddit_ user **[TUGRN](https://www.reddit.com/user/TUGRN)**
