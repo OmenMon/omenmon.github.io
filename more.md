@@ -32,6 +32,8 @@ This program is _free software_: you can redistribute it and/or modify it under 
 
 * Due to the fact that the same executable is designed to run both as a CLI (console) and GUI application, which is not officially supported on _Windows_, there are some quirks with how the application operates in console mode: redirecting output to a file is not possible, and interacting with the application while it is running is also interacting with the underlying command prompt (however, the command-line mode is non-interactive, so it doesn't matter in practice).
 
+  * To launch **OmenMon** using _PowerShell_ from the current directory, the path needs to be specified explicitly: `.\OmenMon`
+
   * If you are using _PowerShell_ as your default shell and run into issues with how the console output is displayed, type `start cmd` to open a classic _Command Prompt_ window, and run the application from there.
 
 ## Acknowledgements
