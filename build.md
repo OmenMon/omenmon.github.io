@@ -76,9 +76,9 @@ Earlier _C#_ versions would not work without some code having to be rewritten. T
 
 ## Version History {#history}
 
-### 0.60.0 (2024-01-08)
+### 0.60.0 (2024-01-10)
 
-  * Addresses the issue where a single-color backlit keyboard is incorrectly detected as supporting backlight color customization, causing an exception when attempting to open the main window: thank you to **[@rotgruengelb](https://github.com/rotgruengelb)** for reporting this issue
+  * Addresses the issue where a single-color backlit keyboard is incorrectly detected as supporting backlight color customization, causing an exception when attempting to open the main window: thank you to both **[@rotgruengelb](https://github.com/rotgruengelb)** and **[DilutedOxygen1451](https://github.com/DilutedOxygen1451)** for independently discovering and reporting this issue
 
 ### 0.59.0 (2023-11-30)
 
