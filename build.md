@@ -76,6 +76,12 @@ Earlier _C#_ versions would not work without some code having to be rewritten. T
 
 ## Version History {#history}
 
+### 0.61.0 (Pending)
+
+  * In case the Embedded Controller could not be initialized due to the driver failing to load, provide more detailed error information to the user to assist in resolving issues such as the one reported by [@rm1337](https://github.com/rm1337) in [#27](https://github.com/OmenMon/OmenMon/issues/27)
+  * Sign the executable with a (currently just self-signed) certificate, to establish a reputation with virus scanners that would persist across releases in order to workaround false positive virus-scan reports: for details, see [#28](https://github.com/OmenMon/OmenMon/issues/28); users who want to whitelist **OmenMon** can optionally download the [OmenMon CA certificate file](https://omenmon.github.io/ca.cer) and add it to their local store with `certutil -user -addstore Root ca.cer`
+  * Optionally pause fan program when entering a low-power state, and re-enable upon resume, to workaround issues occuring with the so-called "modern" standby feature as reported by [@mikor-85](https://github.com/mikor-85) in [#32](https://github.com/OmenMon/OmenMon/issues/32); use the new configuration setting [FanProgramSuspend] set to **false** to disable this new feature
+
 ### 0.60.0 (2024-01-10)
 
   * Addresses the issue where a single-color backlit keyboard is incorrectly detected as supporting backlight color customization, causing an exception when attempting to open the main window: thank you to both **[@rotgruengelb](https://github.com/rotgruengelb)** and **[@DilutedOxygen1451](https://github.com/DilutedOxygen1451)** for independently discovering and reporting this issue

@@ -288,6 +288,14 @@ When **true**, during a fan program, **OmenMon** will first check (using the Emb
 
 If set to **false**, the check will be skipped, which results in one fewer Embedded Controller operation every [UpdateProgramInterval](#updateprograminterval), at the cost of one more WMI BIOS call. Further, in this scenario the countdown does not have to be checked and possibly extended, which additionally means one or two fewer Embedded Controller operations. Thus, this setting significantly reduces Embedded Controller load, which might be an issue in some environments.
 
+#### FanProgramSuspend
+
+A [Boolean value](#boolean) that defaults to **true**.
+
+When **true**, if a fan program is running, it will be suspended whenever the system is about to enter low-power mode, such as sleep, standby or hibernation, to be automatically re-enabled upon resume. This is mostly to mitigate the so-called "modern" standby issues, as during a true low-power state, a user-mode application such as **OmenMon** would not be able to run anyway.
+
+If you do not need this functionality, setting this to **false** could potentially speed up entering low-power states, although the difference is likely to be negligible.
+
 ### Fan Programs
 
 Fan program definitions follow the convention:
@@ -690,6 +698,10 @@ An extensively-annotated sample configuration file is distributed with the appli
              (if false, makes one EC operation less every UpdateProgramInterval,
              at the cost of one more WMI BIOS call: can be used to reduce EC load) -->
         <FanProgramModeCheckFirst>true</FanProgramModeCheckFirst>
+
+        <!-- If true, fan program will be suspended whenever the system enters low-power mode
+             such as sleep, standby or hibernation, to be automatically re-enabled upon resume -->
+        <FanProgramSuspend>true</FanProgramSuspend>
 
         <!-- Fan program definitions
              Curve visualization: https://www.desmos.com/calculator/6vfpghtud0
