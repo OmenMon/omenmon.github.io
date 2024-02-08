@@ -493,8 +493,19 @@ public static void SetDisplayOff() {
 
 A [Boolean value](#boolean) that defaults to **false**.
 
-If [Key Custom Action](#key) is not enabled and the application window is already shown on screen,
-subsequent _Omen_ key presses toggle the [FanProgramDefault](#fanprogramdefault) on and off.
+If [Key Custom Action](#key) is not enabled, _Omen_ key presses toggle the [FanProgramDefault](#fanprogramdefault) on and off.
+
+#### KeyToggleFanProgramCycleAll
+
+A [Boolean value](#boolean) that defaults to **true**.
+
+If [KeyToggleFanProgram](#keytogglefanprogram) is enabled, and this setting is **true**, the _Omen_ key cycles through all fan programs. If this settings is **false**, the _Omen_ key toggles the default fan program on and off instead.
+
+#### KeyToggleFanProgramShowGuiFirst
+
+A [Boolean value](#boolean) that defaults to **true**.
+
+If [KeyToggleFanProgram](#keytogglefanprogram) is enabled, show main application window upon the first _Omen_ key press (if not shown already), before using subsequent keypresses to control fan program.
 
 ### Preset Settings {#preset}
 
@@ -795,10 +806,17 @@ An extensively-annotated sample configuration file is distributed with the appli
             <Minimized>true</Minimized>
         </KeyCustomAction>
 
-        <!-- If the application window is already shown on screen,
-             and custom action is disabled, subsequent Omen key
-             presses toggle the default fan program on and off -->
+        <!-- Use the Omen key to control fan program
+             (as long as KeyCustomAction is set to false) -->
         <KeyToggleFanProgram>true</KeyToggleFanProgram>
+
+        <!-- If true, Omen key cycles through all fan programs,
+             instead of toggling the default fan program on and off -->
+        <KeyToggleFanProgramCycleAll>true</KeyToggleFanProgramCycleAll>
+
+        <!-- Show window upon first Omen key press (if not shown already),
+             before using subsequent keypresses to control fan program -->
+        <KeyToggleFanProgramShowGuiFirst>true</KeyToggleFanProgramShowGuiFirst>
 
         <!-- Preset Settings -->
 
