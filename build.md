@@ -76,11 +76,11 @@ Earlier _C#_ versions would not work without some code having to be rewritten. T
 
 ## Version History {#history}
 
-### 0.61.0 (2024-02-08)
+### 0.61.0 (2024-02-09)
 
   * In case the Embedded Controller could not be initialized due to the driver failing to load, provide more detailed error information to the user to assist in resolving issues such as the one reported by [@rm1337](https://github.com/rm1337) in [#27](https://github.com/OmenMon/OmenMon/issues/27)
   * Sign the executable with a (currently just self-signed) certificate, to establish a reputation with virus scanners that would persist across releases in order to workaround false positive virus-scan reports: for details, see [#28](https://github.com/OmenMon/OmenMon/issues/28); users who want to whitelist **OmenMon** can optionally download the [OmenMon CA certificate file](https://omenmon.github.io/ca.cer) and add it to their local store with `certutil -user -addstore Root ca.cer`
-  * Allow more customization with regard to how the _Omen_ key can be used to control fan programs: thank you to [@afterthawed](https://github.com/afterthawed) for the suggestions made in [#31](https://github.com/OmenMon/OmenMon/issues/31); see [KeyToggleFanProgramCycleAll](https://omenmon.github.io/config#keytogglefanprogramcycleall) and  [KeyToggleFanProgramShowGuiFirst](https://omenmon.github.io/config#keytogglefanprogramshowguifirst)
+  * Allow more customization with regard to how the _Omen_ key can be used to control fan programs: thank you to [@afterthawed](https://github.com/afterthawed) for the suggestions made in [#31](https://github.com/OmenMon/OmenMon/issues/31); see [KeyToggleFanProgramCycleAll](https://omenmon.github.io/config#keytogglefanprogramcycleall),  [KeyToggleFanProgramShowGuiFirst](https://omenmon.github.io/config#keytogglefanprogramshowguifirst), and [KeyToggleFanProgramSilent](https://omenmon.github.io/config#keytogglefanprogramsilent)
   * Optionally pause fan program when entering a low-power state, and re-enable upon resume, to workaround issues occurring with the so-called "modern" standby feature as reported by [@mikor-85](https://github.com/mikor-85) in [#32](https://github.com/OmenMon/OmenMon/issues/32); use the new configuration setting [FanProgramSuspend](https://omenmon.github.io/config#fanprogramsuspend) set to **false** to disable this feature
   * Fan program end notification tooltip formatting fix
 

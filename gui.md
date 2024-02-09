@@ -47,9 +47,10 @@ A **balloon tip** can appear to relay important messages:
 
 <img alt="Balloon Notification Tip" src="/pic/gui-notify-tip-balloon.png" width="50%" />
 
-* This is currently only used if the user launches another instance of the application in graphical mode
+* One situation when this is currently used if the user launches another instance of the application in graphical mode
   * Only one application instance is allowed in graphical mode as running multiple would make no sense
   * [Command-line mode](/cli) can be used in parallel even the application is already running in graphical mode
+* Another situation is when the _Omen_ key is pressed to change fan programs while the main window is hidden, this behavior can be customized with [KeyToggleFanProgramSilent](/config#keytogglefanprogramsilent)
 * The functionality to show important status updates, such as possible overheating, is implemented but not currently used
 * Balloon tips can be disabled entirely by setting [GuiTipDuration](/config#guitipduration) to `0`
 

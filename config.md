@@ -433,11 +433,13 @@ A [numerical value](#numerical) that defaults to **30000**. The unit is millisec
 
 How long to show a balloon tip in the notification area. The default setting of 30000, or 30 seconds, is automatically scaled down by the operating system to the highest allowed value, which is more in the order of 10 seconds or so.
 
-These notifications can be annoying, so the feature is used sparingly: the only situation when you can currently see such a notification is when the application is already running in the background and an attempt was made by the user to run another instance of it (unless as a result of pressing the _Omen_ key):
+These notifications can be annoying, so the feature is used sparingly: one situation when you can currently see such a notification is when the application is already running in the background and an attempt was made by the user to run another instance of it (unless as a result of pressing the _Omen_ key):
 
 <img alt="Balloon Notification Tip" src="/pic/gui-notify-tip-balloon.png" width="50%" />
 
-A facility is implemented to relay important [fan program](/gui#fan_program) messages (such as potential overheating) as balloon tips but it is not being used for anything so far.
+Another such situation is when [KeyToggleFanProgram](#keytogglefanprogram) is set to **true** while [KeyToggleFanProgramSilent](#keytogglefanprogramsilent) is set to **false** and the main application window is hidden, in which case a balloon tip notification will pop up whenever the active fan program changes.
+
+A facility is implemented to relay other important [fan program](/gui#fan_program) messages (such as potential overheating) as balloon tips but it is not being used for anything so far.
 
 Setting this to **0** disables this type of notification entirely.
 
@@ -506,6 +508,12 @@ If [KeyToggleFanProgram](#keytogglefanprogram) is enabled, and this setting is *
 A [Boolean value](#boolean) that defaults to **true**.
 
 If [KeyToggleFanProgram](#keytogglefanprogram) is enabled, show main application window upon the first _Omen_ key press (if not shown already), before using subsequent keypresses to control fan program.
+
+#### KeyToggleFanProgramSilent
+
+A [Boolean value](#boolean) that defaults to **false**.
+
+If [KeyToggleFanProgram](#keytogglefanprogram) is enabled and the main application window is hidden, a potentially annoying balloon tip notification will be displayed whenever the fan program changes. Set this to **true** to disable this behavior. In any case, no notification will be displayed if the main window is shown.
 
 ### Preset Settings {#preset}
 
@@ -817,6 +825,9 @@ An extensively-annotated sample configuration file is distributed with the appli
         <!-- Show window upon first Omen key press (if not shown already),
              before using subsequent keypresses to control fan program -->
         <KeyToggleFanProgramShowGuiFirst>true</KeyToggleFanProgramShowGuiFirst>
+
+        <!-- Do not show a balloon tip notification when changing programs -->
+        <KeyToggleFanProgramSilent>false</KeyToggleFanProgramSilent>
 
         <!-- Preset Settings -->
 
