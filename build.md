@@ -76,6 +76,10 @@ Earlier _C#_ versions would not work without some code having to be rewritten. T
 
 ## Version History {#history}
 
+### 0.61.1 (2024-02-15)
+
+  * Fix null pointer reference exception on resume from standby (define callback delegate instance in the class scope so that it is not subject to garbage collection)
+
 ### 0.61.0 (2024-02-09)
 
   * In case the Embedded Controller could not be initialized due to the driver failing to load, provide more detailed error information to the user to assist in resolving issues such as the one reported by [@rm1337](https://github.com/rm1337) in [#27](https://github.com/OmenMon/OmenMon/issues/27)
